@@ -1,0 +1,120 @@
+@use "../../../App.scss" as g;
+
+.benefits-container {
+  h2 {
+    // font-size: 28px;
+    margin-bottom: 30px;
+  }
+
+  .gift-card-section {
+    margin-bottom: 60px;
+
+    .card-top-grid {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      width: 80%;
+      margin: 0 auto;
+
+      .balance-box {
+        width: 50%;
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          display: block;
+        }
+
+        .balance-info {
+          position: absolute;
+          bottom: 16px;
+          right: 20px;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          color: #fff;
+          font-size: 16px;
+
+          .amount {
+            font-size: 20px;
+            // font-weight: 700;
+          }
+        }
+      }
+
+      .add-box {
+        width: 50%;
+        border: 2px dashed #ccc;
+        background: transparent;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        cursor: pointer;
+        color: #999;
+        font-size: 14px;
+        border-radius: 20px;
+        min-height: 160px;
+
+        // &:hover {
+        //   border-color: #888;
+        //   color: #555;
+        // }
+
+        .icon {
+          font-size: 28px;
+          line-height: 1;
+        }
+      }
+    }
+
+    .info-text {
+      margin-top: 30px;
+      color: g.$text-main;
+      font-family: "Pretendard", sans-serif;
+      line-height: 1.6;
+
+      span {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .coupon-section {
+    .coupon-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+
+      .coupon-item {
+        border: 1px solid #eee;
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        font-family: "Pretendard", sans-serif;
+
+        .coupon-info {
+          margin-left: 20px;
+
+          .title {
+            display: block;
+            font-size: 1.12em;
+            color: g.$text-main;
+
+            span {
+              color: g.$text-sale;
+            }
+          }
+
+          .date {
+            color: #999;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}

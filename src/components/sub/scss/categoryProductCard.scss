@@ -1,0 +1,259 @@
+.product-card {
+    font-family: "Pretendard", sans-serif;
+    color: #111;
+
+    .card-link {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .card-img {
+        overflow: hidden;
+        background: #fff;
+
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .image-error-path {
+            padding: 14px;
+            font-family: "Pretendard", sans-serif;
+            font-size: 0.82rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #777;
+            word-break: break-all;
+        }
+    }
+
+    .card-info {
+        margin-top: 14px;
+        font-family: "Pretendard", sans-serif;
+    }
+
+    .card-name {
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 1.45;
+        letter-spacing: -0.01em;
+        color: #111;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .card-sub {
+        margin-top: 6px;
+        font-size: 0.92rem;
+        font-weight: 400;
+        line-height: 1.45;
+        color: #666;
+    }
+
+    .card-price-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 10px;
+        flex-wrap: wrap;
+    }
+
+    .card-price {
+        font-size: 1rem;
+        font-weight: 600;
+        line-height: 1.4;
+        color: #111;
+        flex-shrink: 0;
+    }
+
+    .card-colors {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 12px;
+
+        .color-chip {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .color-more {
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: #666;
+        }
+    }
+}
+
+// 배지 (무료배송 등)
+.card-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+
+    .badge {
+        display: inline-block;
+        font-size: 0.7rem;
+        font-weight: 500;
+        padding: 2px 6px;
+        border: 1px solid #ccc;
+        color: #555;
+        line-height: 1.4;
+        font-family: "Pretendard", sans-serif;
+    }
+}
+
+// ── 호버 액션 ──
+.card-img-wrap {
+    position: relative;
+    overflow: hidden;
+
+    .card-img {
+        position: relative;
+        transition: none;
+
+        // 두 이미지 겹침으로 JS state 없이 hover 이미지 전환
+        .img-main {
+            display: block;
+            width: 100%;
+            height: auto;
+            transition: opacity 0.25s ease;
+        }
+
+        .img-hover {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.25s ease;
+        }
+    }
+
+    &:hover .card-img .img-main {
+        opacity: 0;
+    }
+
+    &:hover .card-img .img-hover {
+        opacity: 1;
+    }
+
+    // 하트 - 항상 우측 상단에 표시
+    .btn-wish {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 2;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(4px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background 0.15s, transform 0.15s;
+
+        img {
+            width: 18px;
+            height: 18px;
+            transition: filter 0.2s ease;
+        }
+
+        &:hover img {
+            filter: invert(27%) sepia(90%) saturate(2000%) hue-rotate(330deg) brightness(100%);
+        }
+
+        // 찜 활성 상태: LIKE.svg를 빨간색으로
+        &.wished img {
+            filter: invert(27%) sepia(90%) saturate(2000%) hue-rotate(330deg) brightness(100%);
+        }
+    }
+
+    // 장바구니 - 호버 시 하단 전체 너비
+    .card-hover-actions {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        opacity: 0;
+        transform: translateY(8px);
+        transition: opacity 0.2s ease, transform 0.2s ease;
+
+        .btn-cart {
+            width: 100%;
+            padding: 12px 0;
+            background: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: background 0.15s;
+
+            img {
+                width: 18px;
+                height: 18px;
+                filter: invert(1);
+            }
+
+            span {
+                font-family: "Pretendard", sans-serif;
+                font-size: 0.88rem;
+                font-weight: 600;
+                color: #fff;
+                letter-spacing: 0.02em;
+            }
+
+            &:hover {
+                background: #333;
+            }
+        }
+    }
+
+    &:hover .card-hover-actions {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .card-feedback {
+        &.need-detail {
+            background: rgba(200, 60, 60, 0.88);
+        }
+    }
+
+    .card-feedback {
+        position: absolute;
+        bottom: 54px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.72);
+        color: #fff;
+        font-size: 0.75rem;
+        font-family: "Pretendard", sans-serif;
+        padding: 5px 12px;
+        border-radius: 20px;
+        white-space: nowrap;
+        pointer-events: none;
+        animation: fadeInUp 0.2s ease;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateX(-50%) translateY(6px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+    }
+}

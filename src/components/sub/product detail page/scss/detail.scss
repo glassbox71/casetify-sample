@@ -1,0 +1,19 @@
+.detail {
+  width: 100%;
+
+  .img-box {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column; // 세로로 쌓기
+    align-items: center; // ⭐ 가로 중앙 정렬
+    justify-content: center;
+    // gap: 40px; // 이미지 사이 간격
+
+    img {
+      display: block;
+      max-width: 100%; // 부모 넘지 않게
+      height: auto;
+      margin: 0 auto; // 혹시 모를 중앙 보정
+    }
+  }
+}

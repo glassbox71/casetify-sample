@@ -1,0 +1,553 @@
+// 회원카드 --------------------------
+.user-info-wrap {
+
+    .title {
+        font-size: 12px;
+    }
+
+    .content {
+        font-size: 24px;
+    }
+
+    .user-card-wrap {
+        // border: 3px dashed darkgoldenrod;
+        // width: 524px;
+        display: flex;
+        gap: 40px;
+        justify-content: center;
+        position: relative;
+        margin: 20px 0 80px 0;
+        // padding: 0 20px;
+
+
+
+        .user-card {
+            width: 45%;
+            // height: 290px;
+            background-color: #135EAB;
+            border-radius: 16px;
+            color: #fff;
+            padding: 18px;
+
+            // display: flex;
+            // flex-direction: column;
+            position: relative;
+
+            .user-info1 {
+                position: absolute;
+                width: 450px;
+                // border: 2px solid red;
+                display: flex;
+                flex-direction: column;
+                gap: 48px;
+
+                .user-card-logo {
+                    width: 117px;
+                    height: 40px;
+                }
+
+                .user-qr {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    width: 120px;
+                    height: 120px;
+                }
+
+                >div {
+                    // border: 1px solid #fff;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                }
+            }
+
+            .user-info2 {
+                // border: 2px dashed skyblue;
+                color: #fff;
+                position: absolute;
+                bottom: 0;
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 30px;
+                gap: 5px;
+
+                .content-wrap {
+                    display: flex;
+                    gap: 50px;
+                    align-items: center;
+
+                    .content {
+                        // border: 2px solid red;
+                        line-height: 1.5;
+                    }
+                }
+            }
+
+            .download {
+                width: 24px;
+                height: 24px;
+                position: absolute;
+                bottom: 15px;
+                right: 15px;
+                filter: invert(1);
+            }
+        }
+
+        .point-card {
+            width: 35%;
+            // height: 290px;
+            background-color: #F2E463;
+            border-radius: 16px;
+            padding: 13px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            // justify-content: space-between;
+            // box-sizing: border-box;
+
+            .point-card-header {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                // align-items: center;
+                font-weight: bold;
+                font-size: 1rem;
+
+                .title {
+                    margin-left: 50%;
+                    transform: translateX(-50%);
+                }
+
+                // margin-bottom: 16px;
+                .point-info-icon {
+                    width: 22px;
+                    height: 22px;
+                    cursor: pointer;
+                }
+            }
+
+            .point-label {
+                font-size: 0.8rem;
+                font-weight: m;
+                margin-bottom: 4px;
+            }
+
+            .point-value {
+                font-size: 2rem;
+                font-weight: 900;
+                line-height: 1.1;
+                margin-bottom: 4px;
+            }
+
+            .point-grade {
+                font-size: 1.1rem;
+                font-weight: bold;
+                color: #E07B00;
+                margin-bottom: 10px;
+            }
+
+            .point-bar-wrap {
+                width: 100%;
+                margin-bottom: 16px;
+
+
+                .point-bar-fill {
+                    height: 100%;
+                    background-color: #e67e22; /* 주황색 채우기 */
+                    border-radius: 4px;
+                    transition: width 0.5s ease-in-out; /* 부드러운 움직임 */
+                }
+
+                .point-bar-thumb {
+                    position: absolute;
+                    top: 50%;
+                    width: 20px;
+                    height: 20px;
+                    background-color: #fff;
+                    border: 3px solid #e67e22;
+                    border-radius: 50%;
+                    transform: translate(-50%, -50%); /* 중심점 맞추기 */
+                    transition: left 0.5s ease-in-out;
+                }
+
+                .point-bar-labels, .point-bar-numbers {
+                    display: flex;
+                    width: 100%;
+                }
+                .point-bar-labels{
+                    margin-bottom: 5px;
+                }
+                .point-bar-numbers{
+                    margin-top: 6px;
+                }
+
+                .label-item {
+                    flex: 1; /* 모든 항목이 동일한 가로 공간을 차지 */
+                    text-align: center;
+                    font-size: 14px;
+                    white-space: nowrap;
+                }
+
+                /* 양 끝 텍스트 위치 보정 */
+                .label-item:first-child {
+                    text-align: left; /* '베이직'과 '0'은 왼쪽 끝에 밀착 */
+                }
+                .label-item:nth-child(2) {
+                    padding-right: 35px;
+                }
+
+                .label-item:last-child {
+                    text-align: right; /* '골드'와 '200'은 오른쪽 끝에 밀착 */
+                }
+
+                /* 바(Track)의 너비 설정 */
+                .point-bar-track-container {
+                    padding: 10px 0; /* 위아래 간격 */
+                    /* 텍스트가 양 끝으로 붙었으므로, 바의 위치도 그에 맞게 마진 조정 */
+                    margin: 0 5px; 
+                }
+
+                .point-bar-track {
+                    position: relative;
+                    height: 8px;
+                    background-color: #fff;
+                    border-radius: 10px;
+                }
+            }
+
+            .point-bottom {
+                width: 100%;
+                background-color: #FFC820;
+                box-sizing: border-box;
+                border-radius: 12px;
+                padding: 12px 16px;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                text-align: center;
+
+                .point-bottom-item {
+                    flex: 1;
+                    font-size: 0.72rem;
+                    font-weight: bold;
+                    line-height: 1.4;
+
+                    .point-highlight {
+                        font-size: 1.2rem;
+                        color: #E07B00;
+                    }
+                }
+
+                .point-divider {
+                    width: 1px;
+                    height: 40px;
+                    background-color: #E0A800;
+                    margin: 0 12px;
+                }
+            }
+        }
+    }
+
+
+    // 계정정보 --------------------------
+    .acount-info {
+        // border: 2px solid rgb(82, 189, 61);
+        position: relative;
+
+        .input-p {
+            // border: 2px solid rgb(82, 189, 61);
+            display: flex;
+            // padding: 20px;
+            gap: 40px;
+            font-size: 0.85em;
+            margin-top: 20px;
+        }
+
+        label {
+            position: relative;
+            // width: 50%;
+            // width: 420px;
+            flex: 1;
+            display: block;
+
+            input {
+                width: 100%;
+                border: 1px solid #2F2F2F;
+                // border-radius: 15px;
+                height: 40px;
+                padding-left: 15px;
+                outline: none;
+            }
+
+            >span {
+                position: absolute;
+                top: 50%;
+                left: 15px;
+                transform: translateY(-50%);
+                transition: all 0.3s ease;
+                pointer-events: none;
+                background-color: #fff;
+                padding: 0 4px;
+            }
+
+            .alone {
+                width: 520px;
+            }
+
+            input:focus~span,
+            input:not(:placeholder-shown)~span {
+                top: 0;
+                transform: translateY(-50%);
+                font-size: 0.75em;
+                color: #101010;
+            }
+
+            &:focus-within span.date-label-span,
+            &:has(.react-datepicker-wrapper input:not(:placeholder-shown)) span.date-label-span {
+                top: 0;
+                transform: translateY(-50%);
+                font-size: 0.75em;
+                color: #101010;
+            }
+
+            .react-datepicker-wrapper {
+                width: 100%;
+
+                input {
+                    font-size: 1rem;
+                    background: #fff;
+                    cursor: pointer;
+                    box-sizing: border-box;
+                }
+            }
+
+            .error-msg {
+                position: absolute;
+                color: #e03131;
+                font-size: 12px;
+                margin-top: 4px;
+                margin-left: 2px;
+            }
+
+            &:has(.error-msg) input {
+                border-color: #e03131 !important;
+            }
+
+            // 👇 DatePicker 전용 추가
+            &:has(.error-msg) .react-datepicker-wrapper input {
+                border-color: #e03131 !important;
+            }
+        }
+
+    }
+
+
+    .password-wrap {
+        border-top: 1px solid #ddd;
+        display: flex;
+        flex-direction: column;
+        margin-top: 40px;
+        margin-bottom: 80px;
+
+        .pass-notice {
+            font-size: 0.75em;
+            color: #6a6a6a;
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .pass-change-btn {
+            // padding-left: 20px;
+
+            button {
+                border: 1px solid #000;
+                background-color: #000;
+                color: #fff;
+                white-space: nowrap;
+                padding: 10px 38px;
+                font-size: 1rem;
+                margin-top: 20px;
+
+                &:hover {
+                    background: #fff;
+                    color: #000;
+                    border: 1px solid #000;
+                }
+            }
+        }
+    }
+
+    // 배송주소 --------------------------
+    .title-wrap {
+        margin-top: 20px;
+    }
+
+    .address-info {
+        // border: 2px solid red;
+
+        .postcode {
+            margin-top: 10px;
+
+            label {
+                display: flex;
+                // gap: 20px;
+                align-items: center;
+
+                input {
+                    width: 420px;
+                }
+            }
+
+            .address-btn{
+                padding: 0;
+                div{
+                    padding: 0 20px;
+                    flex-direction: column;
+                }
+
+                button {
+                    background-color: #000;
+                    color: #fff;
+                    padding: 10px 12px;
+                    font-size: 0.88rem;
+                    border: 1px solid #FFF;
+
+                    &:hover {
+                        background: #fff;
+                        color: #000;
+                        border: 1px solid #000;
+                    }
+                }
+            }
+        }
+
+        div {
+            display: flex;
+            font-size: 0.85em;
+            padding: 10px 0;
+
+            label {
+                position: relative;
+                width: 100%;
+                display: block;
+
+                input {
+                    width: 100%;
+                    border: 1px solid #2F2F2F;
+                    // border-radius: 15px;
+                    height: 40px;
+                    padding-left: 15px;
+                    outline: none;
+                }
+
+                input:read-only {
+                    background: #eee;
+                    border: 1px solid #d7d7d7;
+                    cursor: not-allowed;
+
+                    +span {
+                        background: #eee;
+                    }
+                }
+
+
+
+                span {
+                    position: absolute;
+                    top: 50%;
+                    left: 15px;
+                    transform: translateY(-50%);
+                    transition: all 0.3s ease;
+                    pointer-events: none;
+                    background: #fff;
+                    padding: 0 4px;
+
+                    opacity: 0;
+                    visibility: hidden;
+
+                    &.always {
+                        opacity: 1;
+                        visibility: visible;
+                    }
+                }
+
+                input:not(:read-only):focus~span,
+                input:not(:placeholder-shown)~span {
+                    top: 0;
+                    transform: translateY(-50%);
+                    font-size: 0.75em;
+                    color: #101010;
+
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+        }
+
+        .btn-wrap {
+            display: flex;
+            justify-content: center;
+            padding: 50px 0 70px;
+
+            button {
+                border: 1px solid #000;
+                background-color: #000;
+                color: #fff;
+                white-space: nowrap;
+                padding: 10px 38px;
+                font-size: 1rem;
+
+                &:hover {
+                    background: #fff;
+                    color: #000;
+                    border: 1px solid #000;
+                }
+            }
+        }
+    }
+
+    // 계정삭제 --------------------------
+    .delete-wrap {
+        background: #eee;
+        padding: 40px;
+        margin-bottom: 50px;
+
+        p {
+            // padding: 10px 0;
+            margin-top: 25px;
+        }
+
+        button {
+            border: 2px solid #FF3535;
+            background: #fff;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #FF3535;
+            padding: 10px 50px;
+            display: block;
+            margin: 40px auto 0px;
+
+            &:hover {
+                background: #FF3535;
+                color: #fff;
+            }
+        }
+    }
+
+    .input-btn {
+        width: 100%;
+        height: 60px;
+        // margin: 50px 0;
+        border: 1px solid #000;
+        background: #000;
+        color: #fff;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+
+    .input-btn:hover {
+        color: #000;
+        background: #fff;
+    }
+}

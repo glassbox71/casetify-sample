@@ -1,0 +1,239 @@
+@use "../../App.scss" as g;
+
+.search-overlay-wrap {
+    width: 100%;
+    // height: 400px; //임시 높이
+    background: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.125);
+
+    padding: 12px 40px;
+    font-size: 1.125em;
+
+    //header보다 위로 보이게 설정
+    z-index: 1000;
+
+    //슬라이드 애니메이션
+    transform: translateY(-100%);
+    transition: transform 0.25s ease-in-out;
+
+    &.active {
+        transform: translateY(0);
+    }
+
+    .search-content-outer-wrap {
+        display: flex;
+
+        .logo {
+            width: 200px;
+            text-align: center;
+            flex: 0 0 auto;
+
+            img {
+                width: 80%;
+            }
+        }
+
+        .search-center-wrap {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            // margin-left: 7.5rem;
+            gap: 0.75em;
+        }
+
+        .search-content-inner-wrap {
+            max-width: 1200px;
+            width: 100%;
+
+            // 내부 제목
+            .inner-title {
+                font-size: 1.25rem;
+                flex-shrink: 0;
+            }
+
+            // 검색 상자
+            .search-bar {
+                display: flex;
+                position: relative;
+
+                label {
+                    display: flex;
+                    flex: 1;
+                    position: relative;
+                }
+
+                input {
+                    flex: 1;
+                    padding: 20px 40px;
+                    padding-left: 60px;
+                    width: 100%;
+                    font-family: inherit;
+                    font-weight: 300;
+                    font-size: 1.25rem;
+                    border: none;
+                    border-bottom: 1px solid g.$text-sub;
+
+                    &:focus {
+                        outline: none;
+                    }
+
+                }
+
+                .btn-search {
+                    position: absolute;
+                    left: 10px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+
+                .btn-reset {
+                    position: absolute;
+                    right: 10px;
+                    top: 50%;
+                    transform: translateY(-50%);
+
+                    img {
+                        width: 20px;
+                    }
+                }
+            }
+
+            // 최근 검색어
+            .recent-search-wrap {
+                @include g.myFlex($jc: null, $ai: center, $gap: 1.5rem);
+                border-bottom: 1px solid g.$card-border;
+                padding: 2rem 0;
+
+                .txt-recent {
+                    font-weight: 300;
+                    font-size: 1rem;
+                    color: g.$text-sub;
+                }
+
+                .recent-result-wrap {
+                    @include g.myFlex($jc: null, $ai: center, $gap: 1rem);
+                    font-size: 1rem;
+                    // font-weight: 300;
+                    color: g.$text-strike;
+
+                    button {
+                        font-family: inherit;
+                        font-size: 1rem;
+                        color: g.$text-sub;
+                    }
+
+                    .remove-all {
+                        border: 1px solid #585858;
+                        padding: 0.25em 0.5em;
+                    }
+
+                    .recent-result-list {
+                        @include g.myFlex($jc: null, $ai: center, $gap: null);
+                        row-gap: 0.625em;
+                        column-gap: 1em;
+                        flex: 1;
+                        flex-wrap: wrap;
+
+                        li {
+                            @include g.myFlex($jc: null, $ai: center, $gap: 0.25rem);
+                        }
+                    }
+                }
+            }
+
+            // 인기 검색어
+            .pop-search-wrap {
+                @include g.myFlex($jc: null, $ai: null, $gap: 1.5rem);
+                padding: 2rem 0;
+
+                .pop-search-list {
+                    display: grid;
+                    grid-template-rows: repeat(5, auto);
+                    grid-auto-flow: column;
+                    margin-top: 2rem;
+                    row-gap: 0.625rem;
+                    column-gap: 10rem;
+
+                    counter-reset: rank;
+
+                    li {
+                        counter-increment: rank;
+                        position: relative;
+                        padding-left: 1.75rem;
+                        line-height: 1.5;
+                        color: g.$text-strike;
+
+                        &::before {
+                            content: counter(rank);
+                            position: absolute;
+                            left: 0;
+                            top: 50%;
+                            transform: translateY(-50%);
+                        }
+                    }
+
+                }
+            }
+
+            //추천 상품
+            .recommend-wrap {
+                padding-bottom: 2em;
+
+                .inner-title {
+                    margin-bottom: 1.25rem;
+                }
+
+                .s-overlay-reco-item-list {
+                    display: grid;
+                    grid-template-columns: repeat(4, minmax(0, 1fr));
+                    gap: 2.5rem;
+                    padding-right: 3.75rem;
+
+                    .goods-img {
+                        max-height: 240px;
+                        margin-bottom: 0.5em;
+                    }
+
+                    .goods-text {
+                        font-family: "Pretendard", sans-serif;
+
+                        .item-name {
+                            @include g.multi-ellipsis($lines: 1);
+                            color: g.$text-sub;
+                            margin-bottom: 0.5em;
+                        }
+
+                        .item-price {
+                            color: g.$text-strike;
+                        }
+                    }
+                }
+            }
+        }
+
+        .img-search {
+            cursor: pointer;
+            font-weight: 300;
+            @include g.myFlex($jc: null, $ai: center, $gap: 0.5rem);
+            // border: 1px dashed;
+            border-radius: 4px;
+            padding: 0.375em 0.75em;
+            margin-top: 0.625em;
+            transition: 0.3s ease-in-out;
+
+            &:hover {
+                background-color: #ddd;
+            }
+        }
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 30px;
+        right: 40px;
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,167 @@
+.review {
+  margin-top: 80px;
+
+  h3 {
+    font-size: 1.25em;
+    margin-bottom: 15px;
+  }
+
+  .review-star {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 40px;
+
+    .left {
+      width: 40%;
+
+      .score {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        .num {
+          font-size: 36px;
+          font-weight: bold;
+        }
+
+        .stars {
+          color: #ffd700;
+          font-size: 20px;
+        }
+      }
+
+      .score-list {
+        margin-top: 20px;
+
+        li {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 6px;
+
+          p {
+            width: 50px;
+            font-size: 13px;
+          }
+
+          .gauge-bar {
+            flex: 1;
+            height: 8px;
+            background: #eee;
+            border-radius: 4px;
+            position: relative;
+
+            span {
+              position: absolute;
+              height: 100%;
+              background: #ffd700;
+              border-radius: 4px;
+              transition: width 0.4s ease;
+            }
+          }
+        }
+      }
+    }
+
+    .right {
+      flex: 1;
+
+      .star-select {
+        margin: 10px 0;
+
+        span {
+          font-size: 24px;
+          cursor: pointer;
+          color: #ccc;
+
+          &.active {
+            color: #ffd700;
+          }
+        }
+      }
+
+      .text-box {
+        border: 1px solid #ddd;
+        padding: 10px;
+        position: relative;
+
+        textarea {
+          width: 100%;
+          height: 100px;
+          border: none;
+          outline: none;
+          resize: none;
+        }
+
+        button {
+          position: absolute;
+          right: 10px;
+          bottom: 10px;
+          background: #ffd700;
+          border: none;
+          padding: 6px 12px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .star-list {
+    .star-bar {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 10px;
+
+      .btn {
+        padding: 6px 10px;
+        border: 1px solid #ddd;
+        cursor: pointer;
+        font-size: 13px;
+
+        &.active {
+          border: 1px solid #111;
+          font-weight: bold;
+        }
+      }
+
+      input {
+        margin-left: auto;
+        padding: 6px;
+        border: 1px solid #ddd;
+      }
+    }
+
+    .detail {
+      li {
+        padding: 15px 0;
+        border-bottom: 1px solid #eee;
+
+        .info {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          .user {
+            font-size: 13px;
+          }
+
+          .star-core {
+            color: #ffd700;
+          }
+
+          .date {
+            margin-left: auto;
+            font-size: 12px;
+            color: #888;
+          }
+        }
+
+        .user-review {
+          margin-top: 10px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}

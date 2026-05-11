@@ -1,0 +1,834 @@
+@use "../../../../App.scss" as g;
+
+
+.detail-page {
+    // padding: 60px 0;
+    position: relative;
+    z-index: 0;
+
+    .category-breadcrumb{
+        margin: 0 0 10px;
+    }
+
+    .detail-inner {
+        width: 1280px;
+        max-width: calc(100% - 40px);
+        margin: 0 auto;
+        display: flex;
+        gap: 60px;
+        align-items: flex-start;
+        flex-wrap: wrap;
+
+    }
+
+    .detail-left {
+        flex: 1;
+    }
+
+    .detail-image-wrap {
+        position: relative; 
+        margin-bottom: 50px;
+
+        .detail-main-image {
+            width: 100%;
+            min-width: 300px;
+            min-height: 300px;
+            background: #f7f7f7;
+            border-radius: 12px;
+            // overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            img {
+                width: 100%;
+                display: block;
+                object-fit: cover;
+            }
+        }
+    
+        .image-wish-btn {
+            position: absolute;
+            // width: 50px;
+      top: 38px;      /* ← bottom 제거, top으로 변경 */
+    right: 38px;    /* ← left 제거, right으로 변경 */
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(6px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+
+            img {
+                width: 40px;
+                height: 40px;
+                object-fit: contain;
+                transition: filter 0.3s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            }
+
+            &:hover img {
+                filter: invert(27%) sepia(90%) saturate(2000%) hue-rotate(330deg) brightness(100%);
+                transform: scale(1.1);
+            }
+
+            &.wished img {
+                filter: invert(27%) sepia(90%) saturate(2000%) hue-rotate(330deg) brightness(100%);
+                transform: scale(1.15);
+            }
+        }
+    }
+
+    .detail-thumb-list {
+        margin-top: 60px;
+        position: absolute;
+
+        left: 50%;                      // 기준을 가운데로 이동
+        transform: translateX(-50%);    // 자기 너비의 절반만큼 왼쪽 이동 → 진짜 중앙
+
+        bottom: -100px;                  // 메인이미지 아래로 위치
+
+        display: flex;
+        // flex-wrap: wrap;
+        gap: 12px;
+
+        li {
+
+            width: 80px;
+            min-height: 80px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #f7f7f7;
+
+            &.active {
+                border-color: #111;
+            }
+
+            button {
+                width: 100%;
+                height: 100%;
+                border: 0;
+                background: none;
+                padding: 0;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            img {
+                width: 100%;
+                display: block;
+            }
+        }
+    }
+    .color-remote {
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(6px);
+        border-radius: 12px;
+        padding: 10px 8px;
+        z-index: 10;
+
+        button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            border: 2px solid transparent;
+            background: none;
+            border-radius: 8px;
+            padding: 4px;
+            cursor: pointer;
+            transition: border-color 0.2s;
+
+            &.active {
+                border-color: #111;
+            }
+
+            &:hover { border-color: #aaa; }
+        }
+
+        .remote-chip {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            display: block;
+        }
+
+        .remote-label {
+            font-size: 10px;
+            color: #333;
+            text-align: center;
+            line-height: 1.3;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+    // ======== ~오른쪽 ====================================================
+
+
+    .right-info-wrap{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;   
+    }     
+    .label{
+        font-weight: 400px;
+        font-size: 12px;
+        p{
+            font-size: 8px;
+        }
+    }
+
+
+    // 기종 아코디언====================================
+
+    .model-accordion {
+        position: relative;
+
+        .model-accordion-trigger {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 18px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background: #fff;
+            font-size: 15px;
+        }
+
+        .model-accordion-list {
+            position: absolute;
+            top: calc(100% + 6px);
+            left: 0;
+            width: 100%;
+            border: 1px solid #e5e5e5;
+            border-radius: 14px;
+            background: #fff;
+            z-index: 10;
+            max-height: 520px;
+            overflow-y: auto;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+
+            // ✅ 브랜드 탭
+            .model-brand-tabs {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                justify-items: center; // ✅ 이것만 추가
+                gap: 12px;
+                padding: 16px;
+                position: sticky;
+                top: 0;
+                background: #fff;
+                z-index: 2;
+
+                button {
+                    width: 100%;
+                    padding: 10px 18px;
+                    border-radius: 999px;
+                    border: 1.5px solid #ddd;
+                    background: #fafafa;
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: #555;
+                    cursor: pointer;
+                    transition: all 0.2s;
+
+                    &.active {
+                        border-color: #111;
+                        background: #111;
+                        color: #fff;
+                        font-weight: 600;
+                    }
+
+                    &:hover:not(.active) {
+                        border-color: #bbb;
+                        background: #fff;
+                        color: #111;
+                    }
+                }
+            }   
+
+            // ✅ 기종 리스트
+            .model-sub-list {
+                padding: 12px;
+
+                li {
+                    padding: 16px 18px;
+                    font-size: 15px;
+                    color: #222;
+                    cursor: pointer;
+                    border-radius: 10px;
+                    border: 1px solid #e3e3e3;
+                    margin-bottom: 10px;
+                    background: #fff;
+                    transition: all 0.15s;
+
+                    &:hover {
+                        border-color: #bbb;
+                        background: #fafafa;
+                    }
+
+                    &.active {
+                        border-color: #111;
+                        font-weight: 600;
+                        background: #fff;
+                    }
+                }
+            }
+        }
+        .model-accordion-arrow{
+            font-size: 11px;
+            color: #888;
+            transition: transform 0.2s ease;
+            &.open { transform: rotate(180deg); }
+        }
+    }
+    // =====================================
+
+    .image-error-path {
+        max-width: 100%;
+        padding: 12px;
+        margin: 0;
+        font-size: 10px;
+        line-height: 1.4;
+        color: #888;
+        word-break: break-all;
+        text-align: center;
+        display: inline-block;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .detail-right {
+        width: 420px;
+        flex-shrink: 0;
+
+    }
+
+
+    .detail-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+
+        .badge-free-ship {
+            font-size: 12px;
+            font-weight: 400;
+            color: g.$color-blue;
+            background: transparent;
+            border: 1px g.$color-blue solid;
+            padding: 3px 8px;
+            border-radius: 4px;
+            letter-spacing: 0.3px;
+        }
+
+        .detail-product-id {
+            font-size: 11px;
+            color: #aaa;
+            letter-spacing: 0.5px;
+            margin-left: auto; // ✅ 뱃지 없어도 항상 오른쪽 고정
+        }
+    }
+
+
+    .detail-artist {
+        font-size: 14px;
+        color: #888;
+        margin-bottom: 10px;
+    }
+
+    .detail-title {
+        font-size: 32px;
+        line-height: 1.3;
+        margin-bottom: 16px;
+    }
+
+    .detail-price {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 30px;
+    }
+// ==========================  ~아코디언  =============================
+
+
+
+.accordion {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+
+    &-trigger {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 18px;
+        background: #fff;
+        border: 0;
+        cursor: pointer;
+        font-size: 15px;
+
+        &:hover { background: #f7f7f7; }
+    }
+
+    &-arrow {
+        font-size: 11px;
+        color: #888;
+        transition: transform 0.2s ease;
+        &.open { transform: rotate(180deg); }
+    }
+
+    &-list {
+        padding: 12px;
+        border-top: 1px solid #eee;
+        background: #fff;
+
+        li {
+            padding: 16px 18px;
+            font-size: 15px;
+            color: #222;
+            cursor: pointer;
+            border-radius: 10px;
+            border: 1px solid #e3e3e3;
+            margin-bottom: 10px;
+            background: #fff;
+            transition: all 0.15s;
+
+            &:last-child { margin-bottom: 0; }
+            &::before { content: none; }
+
+            &:hover {
+                border-color: #bbb;
+                background: #fafafa;
+            }
+
+            &.active {
+                border-color: #111;
+                font-weight: 600;
+                background: #fff;
+            }
+        }
+    }
+}
+
+.accordion-list {
+    li {
+        cursor: pointer;
+    }
+}
+
+// =================================================================================
+
+// [ ~~~ 주문지 ~~~]
+
+
+    .order-result {
+        margin: 20px 0;
+
+        .left-line {
+            border: none;
+            border-top: 1px solid #e5e5e5;
+            margin-bottom: 16px;
+        }
+    }
+
+    .order-result-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 14px 16px;
+        background: #f7f7f7;
+        border-radius: 6px;
+        margin-bottom: 16px;
+
+        .order-option-name {
+            flex: 1;
+            font-size: 13px;
+            color: #111;
+            line-height: 1.5;
+
+            .order-option-detail {
+                font-style: normal;
+                color: #888;
+            }
+        }
+    }
+
+    .order-quantity {
+        display: flex;
+        align-items: center;
+        gap: 0;
+        border: 1px solid #ddd;
+        background: #fff;
+
+        button {
+            width: 28px;
+            height: 28px;
+            border: 0;
+            background: none;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &:hover { background: #f0f0f0; }
+        }
+
+        span {
+            width: 32px;
+            text-align: center;
+            font-size: 14px;
+        }
+    }
+
+    .order-row-price {
+        font-size: 14px;
+        font-weight: 600;
+        white-space: nowrap;
+    }
+
+    .bundle-row-origin {
+        font-size: 11px;
+        color: #aaa;
+        text-decoration: line-through;
+        font-style: normal;
+        margin-right: 6px;
+    }
+
+    .order-total {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0;
+
+        span {
+            font-size: 14px;
+            color: #555;
+        }
+
+        strong {
+            font-size: 20px;
+            font-weight: 700;
+        }
+    }
+
+
+
+
+
+// 번들세트 구매 섹션 - 가로 3열 ===========================================================
+    .bundle-section {
+        margin-top: 24px;
+
+        .bundle-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #000000;
+            margin-bottom: 12px;
+        }
+
+        .bundle-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .bundle-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            position: relative;
+
+            .bundle-checkbox {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 16px;
+                height: 16px;
+                cursor: pointer;
+                z-index: 1;
+                // ✅ 기본 체크박스 숨기기
+                appearance: none;
+                -webkit-appearance: none;
+                border: 1.5px solid #ddd;
+                border-radius: 3px;
+                background: #fff;
+                transition: background 0.2s, border-color 0.2s;
+
+                // ✅ 체크됐을 때 검정 배경 + 흰 체크
+                &:checked {
+                    background: #111;
+                    border-color: #111;
+
+                    &::after {
+                        content: "";
+                        display: block;
+                        width: 4px;
+                        height: 8px;
+                        border: 2px solid #fff;
+                        border-top: none;
+                        border-left: none;
+                        transform: rotate(45deg);
+                        margin: 1px auto 0;
+                    }
+                }
+            }
+
+            .bundle-img-wrap {
+                width: 100%;
+                aspect-ratio: 1;
+                border-radius: 8px;
+                overflow: hidden;
+                background: #f0f0f0;
+                border: 2px solid transparent;
+                transition: border-color 0.2s;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    display: block;
+                }
+            }
+
+            &.selected .bundle-img-wrap { border-color: #ffa2a2; }
+
+            .bundle-name {
+                font-size: 12px;
+                text-align: center;
+                color: #333;
+                line-height: 1.4;
+                word-break: break-all;
+            }
+        }
+    }
+
+    .budle-buy{
+        margin-top: 100px;
+        // padding: 0 30px 30px 30px;
+        // border: #f0ebeb 1px solid ;
+        // border-radius: 10px;
+        // background-color: #e1e1e1;
+    }
+
+    .bundle-price-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+        margin-top: 4px;
+
+        .bundle-default-price {
+            font-size: 12px;
+            color: #555;
+        }
+
+        .bundle-origin-price {
+            font-size: 11px;
+            color: #aaa;
+            text-decoration: line-through;
+            font-style: normal;
+        }
+
+        .bundle-discount-price {
+            font-size: 12px;
+            color: #111;
+            font-weight: 700;
+        }
+
+        .bundle-discount-badge {
+            font-size: 10px;
+            color: #fff;
+            background: #ff4d4d;
+            padding: 1px 5px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+    }
+
+    .bundle-total-wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 16px;
+        padding: 12px 16px;
+        background: #fff;
+        border-radius: 8px;
+        border: 1px solid #eee;
+
+        .bundle-total-label {
+            font-size: 13px;
+            color: #555;
+        }
+
+        .bundle-total-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            .bundle-total-origin {
+                font-size: 12px;
+                color: #aaa;
+                text-decoration: line-through;
+                font-style: normal;
+            }
+
+            .bundle-total-discount {
+                font-size: 16px;
+                font-weight: 700;
+                color: #111;
+            }
+        }
+    }
+
+
+
+// =================================================================================
+
+    .left-line {
+        width: 400px;
+        margin: 30px auto;
+
+    }
+
+    .icon {
+        filter: brightness(0) invert(1); // ✅ 흰색
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 4px;
+
+    img {
+    width: 20px;
+    height: 20px;
+    display: block;}
+    }
+
+
+    .buy-btn {
+        width: 100%;
+        height: 52px;
+        border: 0;
+        background: #111;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        margin: 20px 0 0px;
+
+        display: flex;              // ✅ 핵심
+        align-items: center;        // ✅ 세로 가운데
+        justify-content: center;    // ✅ 가로 가운데
+        gap: 8px;
+    }
+
+    .detail-desc {
+        padding-top: 20px;
+        border-top: 1px solid #e5e5e5;
+
+        h3 {
+            margin-bottom: 12px;
+            font-size: 18px;
+        }
+
+        p {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #666;
+            word-break: break-all;
+        }
+    }
+
+
+    .detail-device-colors,
+    .detail-colors {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .detail-device-colors button,
+    .detail-colors button {
+        padding: 10px 14px;
+        border: 1px solid #ddd;
+        background: #fff;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .detail-device-colors button.active,
+    .detail-colors button.active {
+        border-color: #111;
+        background: #111;
+        color: #fff;
+    }
+
+    .color-chip {
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        margin-right: 6px;
+        vertical-align: middle;
+        border: 1px solid #ccc;
+    }
+}
+// ✅ 로그인 배너 (팝업 대체)
+.login-banner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(188, 73, 73, 0.88);
+    color: #fff;
+    padding: 16px 40px;
+    border-radius: 999px;
+    font-size: 18px;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+    z-index: 10;
+    animation: loginBannerIn 0.2s ease;
+
+    @keyframes loginBannerIn {
+        from {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.92);
+        }
+        to {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+    }
+}

@@ -1,0 +1,321 @@
+/* CategoryHero.scss */
+
+.category-hero {
+    position: relative;
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+    background: #f5f5f5;
+    margin-top: 80px;
+}
+
+.category-hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    background:
+        radial-gradient(circle at 78% 50%,
+            rgba(255, 255, 255, 0.38) 0%,
+            rgba(255, 255, 255, 0.1) 30%,
+            rgba(255, 255, 255, 0) 58%),
+        linear-gradient(90deg,
+            rgba(255, 255, 255, 0.82) 0%,
+            rgba(255, 255, 255, 0.42) 42%,
+            rgba(255, 255, 255, 0) 100%);
+}
+
+.category-hero-img {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center center;
+
+    pointer-events: none;
+}
+
+.category-hero-inner {
+    position: relative;
+    z-index: 2;
+
+    width: min(100%, 1440px);
+    height: 100%;
+
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.category-hero-text {
+    position: absolute;
+    left: 20px;
+    top: 62px;
+
+    width: 520px;
+
+    font-family: "Pretendard", sans-serif;
+    color: #111;
+    text-align: left;
+
+    span {
+        display: block;
+
+        margin-bottom: 18px;
+
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+
+        color: rgba(0, 0, 0, 0.46);
+    }
+
+    p {
+        display: block;
+
+        width: 360px;
+        margin: 0;
+
+        font-size: 17px;
+        font-weight: 400;
+        line-height: 1.5;
+
+        letter-spacing: -0.03em;
+
+        color: rgba(0, 0, 0, 0.68);
+    }
+
+    h2 {
+        display: block;
+
+        margin-top: 50px;
+        margin-left: -80px;
+        padding: 0;
+
+        font-size: 40px;
+        font-weight: 600;
+        line-height: 1;
+
+        letter-spacing: -0.06em;
+        white-space: nowrap;
+    }
+}
+
+/* =========================
+   CATEGORY GRADIENTS
+========================= */
+
+/* 디바이스 */
+
+.category-hero-case-device {
+    background:
+        linear-gradient(90deg,
+            #f7efad 0%,
+            #ece28e 100%);
+}
+
+/* 디자인 */
+
+.category-hero-case-design {
+    background:
+        linear-gradient(90deg,
+            #efefef 0%,
+            #dcdcdc 100%);
+}
+
+/* 맥세이프 */
+
+.category-hero-case-magsafe,
+.category-hero-accessory-magsafe {
+    background:
+        linear-gradient(90deg,
+            #f4d8a4 0%,
+            #ebc278 100%);
+}
+
+/* 세트 */
+
+.category-hero-case-set {
+    background:
+        linear-gradient(90deg,
+            #ececec 0%,
+            #dfdfdf 100%);
+}
+
+/* 콜라보 */
+
+.category-hero-case-collabo {
+    background:
+        linear-gradient(90deg,
+            #efd1d6 0%,
+            #e6b9c2 100%);
+}
+
+/* 스트랩 */
+
+.category-hero-accessory-strap {
+    background:
+        linear-gradient(90deg,
+            #d9f0ea 0%,
+            #bfe5dd 100%);
+}
+
+/* 참 */
+
+.category-hero-accessory-charm {
+    background:
+        linear-gradient(90deg,
+            #f1dddd 0%,
+            #e8caca 100%);
+}
+
+/* 보호필름 */
+
+.category-hero-accessory-protector {
+    background:
+        linear-gradient(90deg,
+            #f3ead8 0%,
+            #ead7b7 100%);
+}
+
+/* 기타 */
+
+.category-hero-accessory-etc {
+    background:
+        linear-gradient(90deg,
+            #f2dfa9 0%,
+            #e8c98b 100%);
+}
+
+/* 테크파우치 */
+
+.category-hero-travel-pouch {
+    background:
+        linear-gradient(90deg,
+            #f2d6a7 0%,
+            #e9c98d 100%);
+}
+
+/* 캐리어 */
+
+.category-hero-travel-suitcase {
+    background:
+        linear-gradient(90deg,
+            #dfe8c4 0%,
+            #d2dbaf 100%);
+}
+
+/* 캐릭터 */
+
+.category-hero-colab-character {
+    background:
+        linear-gradient(90deg,
+            #f1c7cf 0%,
+            #e7afb9 100%);
+}
+
+/* 아트 */
+
+.category-hero-colab-art {
+    background:
+        linear-gradient(90deg,
+            #7c7c7c 0%,
+            #000000 65%);
+
+    .category-hero-text {
+        color: #fff;
+
+        span,
+        p {
+            color: rgba(255, 255, 255, 0.72);
+        }
+    }
+}
+
+/* 패션 */
+
+.category-hero-colab-fashion {
+    background:
+        linear-gradient(90deg,
+            #ececec 0%,
+            #dddddd 100%);
+}
+
+/* 영화 */
+
+.category-hero-colab-movie {
+    background:
+        linear-gradient(90deg,
+            #ded7a9 0%,
+            #d1ca98 100%);
+}
+
+/* 스포츠 */
+
+.category-hero-colab-sports {
+    background:
+        linear-gradient(90deg,
+            #b9bdf6 0%,
+            #9fa4ea 100%);
+}
+
+/* 기프트카드 */
+
+.category-hero-casetify-giftcard {
+    background:
+        linear-gradient(90deg,
+            #f0e2f3 0%,
+            #f0cffd 100%);
+
+    h2{
+        position: absolute;
+        top: 50%;
+        left: 15%;
+        font-weight: 400;
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+    .category-hero {
+        height: 220px;
+    }
+
+    .category-hero-img {
+        object-position: 72% center;
+        opacity: 0.55;
+    }
+
+    .category-hero-inner {
+        padding: 0 16px;
+    }
+
+    .category-hero-text {
+        top: 48px;
+        left: 16px;
+
+        width: calc(100% - 32px);
+
+        span {
+            margin-bottom: 12px;
+            font-size: 11px;
+        }
+
+        p {
+            width: 220px;
+            font-size: 14px;
+        }
+
+        h2 {
+            margin: 18px 0 0 110px;
+            font-size: 34px;
+        }
+    }
+}

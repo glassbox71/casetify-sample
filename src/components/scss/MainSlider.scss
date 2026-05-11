@@ -1,0 +1,79 @@
+.main-slider-wrap {
+    position: relative; // 👈 기준점
+
+    .slide-counter {
+        position: absolute;
+        bottom: 40px;
+        right: 60px;
+
+        font-size: 0.9rem;
+        color: #2F2F2F;
+        z-index: 10;
+
+        &.white{
+            color: #fff;
+        }
+    }
+
+    .main-slider-img {
+        height: 50vw;
+        max-height: 850px;
+        min-height: 300px;
+
+        .swiper-slide {
+            position: relative;
+
+            &::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(213deg, rgba(130, 130, 130, 0) 47%, rgba(0, 0, 0, 0.21) 80%);
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+
+    .main-scrollbar-removed {
+        display: none;
+    }
+}
+
+
+
+.slide-title {
+    position: absolute;
+    left: 80px;
+    bottom: 80px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+}
+
+.title-img {
+    width: 80%;
+}
+
+.title-text {
+    margin-top: 15px;
+
+    >p {
+        white-space: pre-line;
+        text-shadow: 0 3px 3px rgba(0, 0, 0, 0.25);
+    }
+
+    .main-text {
+        font-size: 30px;
+    }
+
+    .sub-text {
+        font-size: 24px;
+    }
+}

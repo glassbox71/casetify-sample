@@ -1,0 +1,166 @@
+export const studioPosData = [
+    {
+        id: 1,
+        storeArea: "서울특별시",
+        storeName: "케이스티파이 스튜디오 더현대 서울",
+        storeAddress: "서울특별시 영등포구 여의대로 108, 더현대 서울 지하 2층",
+        storeImg: "/images/studio/studio_01_yeouido_01.jpg",
+        openHour:
+            ["월요일 - 목요일 : 10:30AM - 8:00PM KST",
+                "금요일 - 일요일 : 10:30AM - 8:30PM KST"],
+        lat: 37.5259162,
+        lng: 126.9284926
+    },
+    {
+        id: 2,
+        storeArea: "부산광역시",
+        storeName: "케이스티파이 스튜디오 신세계백화점 센텀시티점",
+        storeAddress: "부산광역시 해운대구 센텀남대로 35, 지하2층",
+        storeImg: "/images/studio/studio_02_centum_01.jpg",
+        openHour:
+            ["월요일 - 목요일 : 10:30AM - 8:00PM KST",
+                "금요일 - 일요일 : 10:30AM - 8:30PM KST"],
+        lat: 35.1688837,
+        lng: 129.1302749,
+    },
+    {
+        id: 3,
+        storeArea: "서울특별시",
+        storeName: "케이스티파이 스튜디오 잠실 롯데월드몰",
+        storeAddress: "서울특별시 송파구 올림픽로 300, 롯데월드몰 지하 1층",
+        storeImg: "/images/studio/studio_03_jamsil_01.jpg",
+        openHour:
+            ["월요일 - 일요일 : 10:30AM - 10:00PM KST"],
+        lat: 37.513621,
+        lng: 127.104114,
+    },
+    {
+        id: 4,
+        storeArea: "경기도",
+        storeName: "케이스티파이 스튜디오 현대백화점 판교점",
+        storeAddress: "경기도 성남시 분당구 판교역로 146번길 20, 현대백화점 판교점 4층",
+        storeImg: "/images/studio/studio_04_pangyo_01.jpg",
+        openHour:
+            ["월요일 - 목요일 : 10:30AM - 8:00PM KST",
+                "금요일 - 일요일 : 10:30AM - 8:30PM KST"],
+        lat: 37.3927758,
+        lng: 127.112028,
+    },
+    {
+        id: 5,
+        storeArea: "대구광역시",
+        storeName: "케이스티파이 스튜디오 더현대 대구",
+        storeAddress: "대구광역시 중구 달구벌대로 2077, 더현대 대구 지하 2층",
+        storeImg: "/images/studio/studio_05_daegu_01.jpg",
+        openHour:
+            ["월요일 - 목요일 : 10:30AM - 8:00PM KST",
+                "금요일 - 일요일 : 10:30AM - 8:30PM KST"],
+        lat: 35.86646,
+        lng: 128.5905,
+    },
+    {
+        id: 6,
+        storeArea: "서울특별시",
+        storeName: "케이스티파이 스튜디오 롯데백화점 본점",
+        storeAddress: "서울특별시 중구 남대문로 81, 롯데백화점 본점 지하1층",
+        storeImg: "/images/studio/studio_06_euljiro_01.jpg",
+        openHour:
+            ["월요일 - 목요일 : 10:30AM - 8:00PM KST",
+                "금요일 - 일요일 : 10:30AM - 8:30PM KST"],
+        lat: 37.5647182,
+        lng: 126.9816107,
+    },
+    {
+        id: 7,
+        storeArea: "서울특별시",
+        storeName: "케이스티파이 스튜디오 신세계백화점 강남",
+        storeAddress: "서울특별시 서초구 신반포로 176, 신세계백화점 강남점 지하1층",
+        storeImg: "/images/studio/studio_07_gangnam_01.jpg",
+        openHour:
+            ["월요일 - 목요일 : 10:30AM - 8:00PM KST",
+                "금요일 - 일요일 : 10:30AM - 8:30PM KST"],
+        lat: 37.504566,
+        lng: 127.004618,
+    },
+    {
+        id: 8,
+        storeArea: "경기도",
+        storeName: "케이스티파이 스튜디오 타임빌라스 수원",
+        storeAddress: "경기도 수원시 권선구 세화로 134, 타임빌라스 수원 2층",
+        storeImg: "/images/studio/studio_08_suwon_01.jpg",
+        openHour:
+            ["월요일 - 일요일 : 10:30AM - 10:00PM KST"],
+        lat: 37.264177,
+        lng: 126.997112,
+    },
+    {
+        id: 9,
+        storeArea: "경기도",
+        storeName: "케이스티파이 스튜디오 현대백화점 중동점",
+        storeAddress: "경기도 부천시 원미구 길주로 172, 현대백화점 중동점 U-PLEX 1층",
+        storeImg: "/images/studio/studio_09_bucheon_01.jpg",
+        openHour:
+            ["월요일 - 일요일 : 10:30AM - 9:00PM KST"],
+        lat: 37.504432,
+        lng: 126.761069,
+    },
+    {
+        id: 10,
+        storeArea: "서울특별시",
+        storeName: "케이스티파이 도산",
+        storeAddress: "서울특별시 강남구 압구정로46길 67",
+        storeImg: "/images/studio/studio_10_dosan_01.jpg",
+        openHour:
+            ["월요일 - 일요일 : 11:00AM - 8:00PM KST"],
+        lat: 37.524278,
+        lng: 127.036526,
+    },
+    {
+        id: 11,
+        storeArea: "서울특별시",
+        storeName: "케이스티파이 성수",
+        storeAddress: "서울특별시 성동구 연무장길 49",
+        storeImg: "/images/studio/studio_11_seongsu_01.jpg",
+        openHour:
+            ["월요일 - 일요일 : 11:00AM - 8:00PM KST"],
+        lat: 37.542588,
+        lng: 127.055104,
+    },
+    {
+        id: 12,
+        storeArea: "대전광역시",
+        storeName: "케이스티파이 스튜디오 신세계백화점 대전점",
+        storeAddress: "대전광역시 유성구 엑스포로 1, 대전 신세계 아트&사이언스 6층",
+        storeImg: "/images/studio/studio_12_daejeon_01.jpg",
+        openHour:
+            ["월요일 - 목요일 : 10:30AM - 8:00PM KST",
+                "금요일 - 일요일 : 10:30AM - 8:30PM KST"],
+        lat: 36.375215,
+        lng: 127.381998,
+    },
+    {
+        id: 13,
+        storeArea: "충청도",
+        storeName: "케이스티파이 현대백화점 충청점",
+        storeAddress: "충청북도 청주시 흥덕구 직지대로 308, 현대백화점 충청점 1층",
+        storeImg: "/images/studio/studio_13_chungcheong_01.jpg",
+        openHour:
+            ["월요일 - 목요일 : 10:30AM - 8:00PM KST",
+                "금요일 - 일요일 : 10:30AM - 8:30PM KST"],
+        lat: 36.644689,
+        lng: 127.426569,
+    },
+    {
+        id: 14,
+        storeArea: "광주광역시",
+        storeName: "케이스티파이 스튜디오 신세계백화점 광주점",
+        storeAddress: "광주광역시 서구 죽봉대로 61, 신세계백화점 광주점 신관 지하1층",
+        storeImg: "/images/studio/studio_14_gwangju_01.jpg",
+        openHour:
+            ["월요일 - 목요일 : 10:30AM - 8:00PM KST",
+                "금요일 - 일요일 : 10:30AM - 8:30PM KST"],
+        lat: 35.1588069,
+        lng: 126.8820431,
+    },
+]
+

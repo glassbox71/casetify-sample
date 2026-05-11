@@ -1,0 +1,935 @@
+@use "../../App.scss" as g;
+
+.pay-page-wrap {
+    .inner {
+        padding-top: 72px;
+
+        .title-wrap {
+            h2 {
+                font-weight: normal;
+                font-size: 2.5em;
+                text-align: center;
+            }
+
+            .payment-progress-wrap {
+                @include g.myFlex($jc: center, $ai: center, $gap: 6.25em);
+                margin-top: 40px;
+
+                .payment-progress-item {
+                    @include g.myFlex($jc: normal, $fd: column, $ai: center, $gap: 1.25em);
+                    position: relative;
+
+                    &:not(:last-child)::after {
+                        content: "";
+                        position: absolute;
+                        top: 50px; // icon-box의 절반크기
+                        left: 50%; // 원형의 중심부터 시작
+                        width: calc(100% + 6.25em); // li tag + gap 크기 (calc(100% + 간격))
+                        height: 4px;
+                        background-color: #e8e8e8;
+                        z-index: -1;
+                    }
+
+                    .icon-box {
+                        @include g.myFlex($jc: center, $ai: center, $gap: null);
+                        background-color: #f8f8f8;
+                        width: 100px;
+                        height: 100px;
+                        border-radius: 50%;
+
+                        img {
+                            width: 2.5em;
+                        }
+                    }
+
+                    p {
+                        font-size: 1.25em;
+                    }
+
+                    &.active {
+                        .icon-box {
+                            background-color: #222222;
+
+                            img {
+                                filter: brightness(0) invert(1); //아이콘 흰색 처리
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .cart-list-wrap {
+            @include g.myFlex($jc: normal, $ai: normal, $gap: 1.25em);
+            margin-top: 6.25em;
+            position: relative;
+            font-family: "Pretendard", sans-serif;
+
+
+            // 제목 공통
+            .cart-list-area>.cart-title,
+            .payment-ctrl-area>.cart-title {
+                @include g.myFlex($gap: null);
+                padding: 0.75em 1em;
+                border-top: 2px solid #b4b4b4;
+                border-bottom: 2px solid #b4b4b4;
+                margin-bottom: g.$group-gap;
+            }
+
+            // 좌측 - 장바구니 상품 리스트 
+            .cart-list-area {
+                // border: 1px dashed pink;
+                flex: 1;
+
+                // 제목
+                .cart-title {
+                    padding-right: 3em;
+                    margin-bottom: 30px;
+
+                    .cart-title-left {
+                        @include g.myFlex($gap: 15em);
+                    }
+
+                    .cart-title-right {
+                        @include g.myFlex($gap: 5em);
+                    }
+                }
+                .gray-box{
+                    // margin: 0 50px;
+                    // background: #f5f5f5;
+                    margin-bottom: 30px;
+                }
+                .cart-price{
+                    padding: 16px;
+                    text-align: end;
+                    border-top: 1px solid #ddd;
+                    font-size: 1.25rem;
+                    >span{
+                        margin-left: 15px;
+                    }
+                }
+                // 장바구니 항목
+                .cart-item-list {
+                    .cart-item {
+                        @include g.myFlex($jc: normal, $ai: flex-start, $gap: 1.5em);
+
+                        // 장바구니 아이템 (체크박스 이후)
+                        .cart-card-wrap {
+                            @include g.myFlex($ai: center, $gap: 20px);
+                            flex: 1;
+                            background-color: #f5f5f5;
+                            padding: 1em;
+
+                            // 제품사진, 정보
+                            .cart-goods-info {
+                                @include g.myFlex($jc: normal, $ai: normal, $gap: 2em);
+                                flex: 1;
+
+                                .goods-img {
+                                    width: 120px;
+                                    background: white;
+                                    img{
+                                        aspect-ratio: 1/1;
+                                        object-fit: contain;
+                                    }
+                                }
+
+                                .goods-text {
+                                    flex: 1;
+                                    @include g.myFlex($ai: flex-start, $fd: column, $gap: null);
+
+                                    .title {
+                                        font-size: 1.25em;
+                                        margin-top: 0.375em;
+                                    }
+
+                                    .goods-detail-product {
+                                        font-family: "Pretendard", sans-serif;
+                                        color: g.$text-sub;
+
+                                        >p {
+                                            margin-bottom: 0.625em;
+                                        }
+
+                                        >p:last-child {
+                                            margin-bottom: 0;
+                                        }
+                                    }
+                                }
+                            }
+
+                            // 제품수량, 가격
+                            .cart-goods-count-price {
+                                @include g.myFlex($gap: 1.25em);
+                            }
+                        }
+                    }
+                }
+
+            }
+
+            // 우측 - 주문 예상 금액 영역
+            .payment-ctrl-area {
+                position: -webkit-sticky; 
+                position: sticky;
+                top: 20px; 
+                height: max-content; 
+                background-color: #fff;
+                z-index: 10;
+                width: 342px;
+
+                //제목
+                .cart-title {
+                    justify-content: center;
+                }
+
+                // 가격 정보 영역
+                .price-info-wrap {
+                    @include g.myFlex($fd: column, $ai: null);
+                    // background-color: #eeeeee;
+                    border: 1px solid #b4b4b4;
+                    padding: 1.5em;
+                    margin-bottom: 1em;
+
+                    .price-detail {
+                        @include g.myFlex($fd: column, $ai: null, $gap: 0.75em);
+
+                        p {
+                            @include g.myFlex($gap: null);
+                            font-weight: 300;
+
+                            span {
+                                font-weight: 500;
+                            }
+                        }
+                    }
+
+                    .price-total {
+                        @include g.myFlex($fd: column, $ai: null, $gap: 1.25em);
+
+                        .free-info {
+                            text-align: center;
+                            font-size: 0.75em;
+                            font-weight: 300;
+
+                            &::after {
+                                content: "";
+                                display: block;
+                                border-bottom: 1px solid #b4b4b4;
+                                margin-top: 1em;
+                            }
+                        }
+
+                        .est-price {
+                            @include g.myFlex($gap: null);
+                            font-size: 1.125em;
+
+                            span {
+                                color: #ba0000;
+                                font-size: 1.25em;
+                            }
+                        }
+                    }
+                }
+
+                // 주문 버튼
+                .order-btn-wrap {
+                    position: relative;
+
+                    .err-p{
+                        position: absolute;
+                        width: 100%;
+                        height: 20px;
+                        top: -15px;
+                        left: 0;
+                        font-size: 0.88em;
+                        padding-left: 10px;
+                        color: g.$text-sale;
+                        text-align: center
+                    }
+                    button {
+                        width: 100%;
+                        padding: 20px 0;
+                        background-color: #eeeeee;
+                        font-family: inherit;
+                        font-size: 1em;
+
+
+                        &.order-all {
+                            color: white;
+                            background-color: #222222;
+                            margin-bottom: 0.625em;
+                        }
+                    }
+
+                }
+            }
+        }
+
+        .user-info-wrap{
+            font-family: "Pretendard", sans-serif;
+            .input-box{
+                @include g.myFlex($jc: start, $gap: unset);
+                padding: 10px 0;
+
+                &.custom-memo{
+                    padding-top: 0;
+                }
+                .label-div{
+                    width: 20%;
+                    text-align: center;
+                    span{
+                        color: g.$text-sale;
+                        font-size: 0.7em;
+                        padding-left: 5px;
+                    }
+                }
+                .input-div {
+                    position: relative;
+                    width: 100%;
+                    // margin-top: 80px;
+
+                    input {
+                        font-size: 1rem;
+                        color: #222222;
+                        width: 80%;
+                        border: none;
+                        border: solid #aaaaaa 1px;
+                        padding: 10px 0;
+                        padding-left: 10px;
+                        position: relative;
+                        background: #fff;
+                        z-index: 5;
+                    }
+
+                    input::placeholder { color: #aaaaaa; }
+                    input:focus { outline: none; }
+                    input:read-only{
+                        background: #ddd;
+                    }
+
+                    label {
+                        position: absolute;
+                        color: #aaa;
+                        left: 10px;
+                        font-size: 1rem;
+                        bottom: 8px;
+                        transition: all .2s;
+                    }
+
+                    input:focus ~ label, input:not(:placeholder-shown) ~ label {
+                        font-size: 1rem;
+                        bottom: 40px;
+                        color: #666;
+                    }
+
+                    input:focus ~ span, input:not(:placeholder-shown) ~ span {
+                        width: 100%;
+                    }
+
+                    .deli-memo{
+                        padding: 10px;
+                        width: 80%;
+                        background: #fff;
+                        border: solid #aaaaaa 1px;
+                        position: relative;
+                        cursor: pointer;
+                    
+                        .accordion-arrow {
+                            font-size: 11px;
+                            color: #888;
+                            transition: transform 0.2s ease;
+                            position: absolute;
+                            right: 10px;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            &.open { transform: rotate(180deg) translateY(50%); }
+                            width: 20px;
+                        }
+                    }
+                    .placeholder{
+                        color: #aaaaaa;
+                    }
+                    p{
+                        position: absolute;
+                        width: 100%;
+                        height: 20px;
+                        bottom: -20px;
+                        left: 0;
+                        font-size: 0.88em;
+                        padding-left: 10px;
+                        color: g.$text-sale;
+                    }
+                }
+                .option-box{
+                    background: #fff;
+                    width: 80%;
+                    position: absolute;
+                    left: 0;
+                    height: 130px;
+                    z-index: 10;
+
+                    >div{
+                        padding: 10px;
+                        border: 1px solid #eee;
+                        background: #fff;
+                        cursor: pointer;
+                    }
+                }
+                .address-box{
+                    >input{
+                        margin-top: 10px;
+                    }
+                }
+                .zonecode-box{
+                    @include g.myFlex($jc: start, $gap: unset);
+                    .zonecode-btn{
+                        padding: 10px 20px;
+                        background: #000;
+                        color: #fff;
+                        margin-left: 10px;
+                    }
+                    >input{
+                        width: 50%;
+                    }
+                }
+            }
+        }
+        .coupon-wrap{
+            font-family: "Pretendard", sans-serif;
+            padding: 0 16px;
+            @include g.myFlex($fd: column, $ai:normal, $gap: 30px);
+
+            .input-box{
+
+                .label-div{
+                    margin-bottom: 5px;
+                }
+
+                .input-div{
+                    position: relative;
+                    
+                    .placeholder{
+                        color: #aaaaaa;
+                    }
+                    
+                    .coupon-div{
+                        padding: 10px;
+                        width: 80%;
+                        background: #fff;
+                        border: solid #aaaaaa 1px;
+                        position: relative;
+                        cursor: pointer;
+                    
+                        .accordion-arrow {
+                            font-size: 11px;
+                            color: #888;
+                            transition: transform 0.2s ease;
+                            position: absolute;
+                            right: 10px;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            &.open { transform: rotate(180deg) translateY(50%); }
+                            width: 20px;
+                        }
+                    }
+
+                    .add-btn{
+                        padding: 10px 20px;
+                        background: #000;
+                        color: #fff;
+                        margin-left: 10px;
+                    }
+                }
+
+                .gift-div{
+                    @include g.myFlex($jc: start, $gap:unset);
+                }
+                .option-box{
+                    // background: #fff;
+                    width: 80%;
+                    position: absolute;
+                    left: 0;
+                    height: 130px;
+                    z-index: 10;
+
+                    >div{
+                        padding: 10px;
+                        border: 1px solid #eee;
+                        background: #fff;
+                        cursor: pointer;
+                    }
+                    .coupon-select{
+                        @include g.myFlex($gap:unset);
+                        .coupon-title{
+                                >span{
+                                    padding-left: 10px;
+                                    color: #ff6666;
+                                }
+                        }
+                        .limit{
+                                color: #aaa;
+                                font-size: 0.9rem;
+                                margin-top: 10px;
+                        }
+                    }
+
+                }
+
+                .gift-selsct{
+                    width: 80%;
+                    position: relative;
+                    .coupon-div {
+                        width: 100%;
+                    }
+                    .option-box{
+                        width: 100%;
+
+                        .price{
+                            margin-top: 10px;
+                        }
+                    }
+                    input {
+                        font-size: 1rem;
+                        color: #222222;
+                        width: 100%;
+                        border: none;
+                        border: solid #aaaaaa 1px;
+                        padding: 10px 0;
+                        padding-left: 10px;
+                        position: relative;
+                        background: #fff;
+                        z-index: 5;
+                    }
+
+                    input::placeholder { color: #aaaaaa; }
+                    input:focus { outline: none; }
+                    input:read-only{
+                        background: #ddd;
+                    }
+
+                    input:focus ~ label, input:not(:placeholder-shown) ~ label {
+                        font-size: 1rem;
+                        bottom: 40px;
+                        color: #666;
+                    }
+
+                    input:focus ~ span, input:not(:placeholder-shown) ~ span {
+                        width: 100%;
+                    }
+                }
+            }
+
+
+        }
+        .payment-method-box{
+            font-family: "Pretendard", sans-serif;
+            padding: 0 16px;
+
+            .payment-method-list{
+                @include g.myFlex($fw: wrap, $jc: start, $gap:30px);
+                // width: 50%;
+                
+                input[type="radio"] {
+                    accent-color: #808080; 
+                }
+
+                li{
+                    label{
+                        @include g.myFlex($jc: start, $gap:unset);
+                    }
+                }
+            }
+
+            .detail-box {
+                padding: 20px;
+                background-color: #f8f9fa;
+                border: 1px solid #eee;
+                border-radius: 8px;
+                animation: fadeIn 0.3s ease-in-out; // 나타날 때 부드럽게
+
+                h4 {
+                    margin-bottom: 15px;
+                    font-size: 15px;
+                    color: #333;
+                }
+
+                input {
+                    font-size: 1rem;
+                    color: #222222;
+                    width: 100%;
+                    border: none;
+                    border: solid #aaaaaa 1px;
+                    padding: 10px 0;
+                    padding-left: 10px;
+                    position: relative;
+                    background: #fff;
+                    z-index: 5;
+                }
+
+                input::placeholder { color: #aaaaaa; }
+                input:focus { outline: none; }
+
+                .input-group {
+                    display: flex;
+                    gap: 10px;
+                    margin-top: 20px;
+                    input { flex: 1; }
+                }
+                .input-box{
+                    position: relative;
+                    width: 100%;
+                }
+                p.error-text{
+                    position: absolute;
+                    width: 100%;
+                    height: 20px;
+                    bottom: -20px;
+                    left: 0;
+                    font-size: 0.88em;
+                    padding-left: 10px;
+                    color: g.$text-sale;
+                }
+
+                .custom-select-container {
+                    position: relative;
+                    margin-bottom: 20px;
+                    user-select: none;
+
+                    /* 클릭하는 메인 영역 */
+                    .select-selected {
+                        background-color: #fff;
+                        border: 1px solid #aaa;
+                        padding: 10px;
+                        // font-size: 14px;
+                        cursor: pointer;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        transition: border-color 0.2s;
+
+                        .arrow-icon {
+                        width: 10px;
+                        height: 6px;
+                        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23111' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                        transition: transform 0.3s;
+                        }
+
+                        // &:hover { border-color: #000; }
+                    }
+
+                    /* 드롭다운이 열렸을 때 */
+                    &.active {
+                        .select-selected {
+                        border-color: #000;
+                        .arrow-icon { transform: rotate(180deg); }
+                        }
+                    }
+
+                    .select-options {
+                        position: absolute;
+                        top: 100%;
+                        left: 0;
+                        right: 0;
+                        background-color: #fff;
+                        border: 1px solid #000;
+                        border-top: none;
+                        z-index: 10;
+                        padding: 0;
+                        margin: 0;
+                        list-style: none;
+                        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+                        li {
+                            padding: 12px 16px;
+                            font-size: 14px;
+                            cursor: pointer;
+                            color: #666;
+
+                            &:hover {
+                                background-color: #ddd;
+                                color: #000;
+                            }
+
+                            &.selected {
+                                background-color: #000;
+                                color: #fff;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .accordion-section{
+            margin-bottom: 5px;
+        
+            .accordion-header {
+                background-color: #fff;
+                transition: background-color 0.3s;
+                cursor: pointer;
+                padding: 16px;
+                border: 1px solid #eee;
+                // margin-bottom: 5px;
+                // font-weight: bold;
+                display: flex;
+                justify-content: space-between;
+                position: relative;
+
+                .accordion-arrow {
+                    font-size: 11px;
+                    color: #888;
+                    transition: transform 0.2s ease;
+                    position: absolute;
+                    right: 10px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    &.open { transform: rotate(180deg) translateY(50%); }
+                    width: 20px;
+                }
+            }
+            .accordion-header.active {
+                background-color: #f0f0f0; /* 열려있을 때 강조 */
+            }
+            .payment-method-list li {
+                display: inline-block; /* 라디오 버튼을 가로로 배치하고 싶을 경우 */
+                // margin-right: 20px;
+            }
+        }
+
+        .agree-div{
+            text-align: center;
+            color: g.$text-sub;
+            font-family: "Pretendart", sans-serif;
+            font-weight: 400;
+            span{
+                text-decoration: underline;
+            }
+        }
+
+        .complete-msg{
+            margin: 100px 0;
+            text-align: center;
+            font-size: 1.2em;
+
+            &::after{
+                content: "";
+                background-image: url("/images/waveBg-beige.png");
+                background-size: cover;
+                display: block;
+                width: 100%;
+                height: 500px;
+                position: absolute;
+                left: 0;
+                transform: rotateY(180deg);
+            }
+            .input-btn{
+                width: 500px;
+                margin-top: 30px;
+                background: #000;
+                padding: 16px;
+                color: #fff;
+                font-size: 0.88em;
+            }
+            .coupon{
+                font-size: 2rem;
+                color: g.$text-sale;
+                background: #FFE3E3;
+                padding: 5px 15px;
+                margin-bottom: 20px;
+                display: inline-block;
+            }
+            .complete-details{
+                text-align: left;
+                width: 500px;
+                margin: auto;
+                border: 1px solid #ccc;
+                padding: 5px 20px;
+                margin-top: 20px;
+                font-family: "Pretendard", sans-serif;
+                font-size: 1em;
+
+                h3{
+                    font-size: 1.2rem;
+                    margin-bottom: 5px;
+                }
+                .detail-row{
+                    margin-bottom: 5px;
+                    @include g.multi-ellipsis($lines: 1);
+
+                    .detail-title{
+                        width: 20%;
+                        display: inline-block;
+                    }
+                    span+span {
+                        &::before {
+                            content: "";
+                            margin: 0 5px;
+                            display: inline-block;
+                            width: 0;
+                            height: 0.8em;
+                            vertical-align: middle;
+                            border-left: 1px solid #999;
+                        }
+                    }
+                }
+
+                .detail-section{
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+
+    // 간편결제 모달 스타일
+    .payment-modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 800;
+
+        .modal-content {
+            background: #fff;
+            width: 90%;
+            max-width: 400px;
+            // border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+
+            .modal-header {
+                padding: 20px;
+                border-bottom: 1px solid #ddd;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                h3 { margin: 0; font-size: 18px; }
+                .close-btn { background: none; border: none; font-size: 24px; cursor: pointer; }
+
+                &.kakao{
+                    background-color: #FFEB00;
+                }
+                &.naver{
+                    background-color: #fff;
+                }
+            }
+
+            .modal-body {
+                padding: 30px 20px;
+                text-align: center;
+                .method-name {                    
+                    @include g.myFlex($fd: column, $ai: null, $gap: 0.75em);
+                    margin-bottom: 10px;
+                    p {
+                        @include g.myFlex($gap: null);
+                        font-weight: 300;
+
+                        span {
+                            font-weight: 500;
+                        }
+                    }
+                }
+                .total-amount {
+                    margin-top: 10px;
+                    font-size: 1.25em;
+                    span { color: #ff4d4f; font-weight: bold; }
+                }
+            }
+
+            .modal-footer {
+                padding: 15px 20px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                padding-top: 0;
+                
+                button {
+                flex: 1;
+                padding: 16px;
+                // border-radius: 6px;
+                border: none;
+                cursor: pointer;
+                font-weight: 500;
+                }
+                .btn-confirm { background: #000; color: #fff; }
+                .btn-cancel { background: #eee; color: #333; }
+            }
+        }
+    }
+
+    .giftcom-modal-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 50;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(0, 0, 0, 0.5);
+
+        .modal-container {
+            background-color: #fff;
+            width: 400px;
+            padding: 60px 40px 40px; // 위쪽 여백을 더 줘서 아이콘 공간 확보
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            animation: GiftmodalShow 0.3s ease-out;
+
+            .icon-wrapper {
+            position: relative;
+            margin-bottom: 40px;
+
+                img{
+                    width: 100px;
+                }
+            }
+
+            .modal-title {
+                font-size: 1.25em;
+                font-weight: 500;
+                text-align: center;
+                margin-bottom: 50px;
+                line-height: 1.4;
+                word-break: keep-all; // 한글 줄바꿈 예쁘게
+            }
+
+            .close-button {
+                width: 100%;
+                background-color: #000;
+                color: #fff;
+                padding: 18px 0;
+                font-size: 18px;
+                font-weight: 500;
+                border: none;
+                cursor: pointer;
+                transition: background-color 0.2s;
+
+                &:hover {
+                    background-color: #333;
+                }
+
+                &:active {
+                    background-color: #555;
+                }
+            }
+        }
+    }
+
+    @keyframes GiftmodalShow {
+        from {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+}

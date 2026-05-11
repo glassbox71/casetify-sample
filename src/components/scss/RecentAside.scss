@@ -1,0 +1,110 @@
+@use "../../App.scss" as g;
+
+.recent-aside {
+  position: fixed;
+  bottom: 120px;
+  right: 32px;
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  .floating-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #fff;
+    color: g.$text-main;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    .count {
+      font-weight: bold;
+      font-size: 14px;
+    }
+  }
+
+  .recent-modal {
+    width: 280px;
+    max-height: 400px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    margin-bottom: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #eee;
+
+    .recent-modal-header {
+      padding: 15px;
+      background: #f8f8f8;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      h3 {
+        margin: 0;
+        font-size: 1em;
+        font-weight: 500;
+      }
+
+      .close-btn {
+        background: none;
+        border: none;
+        font-size: 1.25em;
+        cursor: pointer;
+      }
+    }
+
+    .item-list {
+      padding: 10px;
+      overflow-y: auto;
+      list-style: none;
+      margin: 0;
+
+      .product-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 8px;
+        border-bottom: 1px solid #f1f1f1;
+        cursor: pointer;
+
+        &:last-child { border-bottom: none; }
+        &:hover { background: #fafafa; }
+
+        img {
+          width: 50px;
+          height: 50px;
+          object-fit: cover;
+          border-radius: 4px;
+        }
+
+        .info {
+          display: flex;
+          flex-direction: column;
+          .name { font-size: 0.88em; font-weight: 500; @include g.multi-ellipsis()}
+          .price { font-size: 0.76em; color: #888; }
+        }
+      }
+    }
+
+    .empty-msg {
+      padding: 30px;
+      text-align: center;
+      color: #999;
+    }
+  }
+}

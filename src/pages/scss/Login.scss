@@ -1,0 +1,658 @@
+@use "../../App.scss" as g;
+
+.login-wrap{
+    margin: 50px 0;
+    padding-top: 100px;
+    position: relative;
+
+    .inner{
+        max-width: 500px;
+        margin: 0 auto;
+
+        .input-div {
+            position: relative;
+            width: 100%;
+            margin-top: 80px;
+
+            .eye-btn{
+                position: absolute;
+                right: 10px;
+                bottom: 0;
+                background: none;
+                border: none;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 4px;
+                z-index: 10;
+            }
+
+            input {
+                font-size: 1rem;
+                color: #222222;
+                width: 100%;
+                border: none;
+                border-bottom: solid #aaaaaa 1px;
+                padding: 10px 0;
+                padding-left: 10px;
+                position: relative;
+                background: none;
+                z-index: 5;
+            }
+
+            input::placeholder { color: #aaaaaa; }
+            input:focus { outline: none; }
+
+            >span {
+                display: block;
+                position: absolute;
+                bottom: 0;
+                left: 0%;  /* right로만 바꿔주면 오 - 왼 */
+                background-color: #666;
+                width: 0;
+                height: 2px;
+                border-radius: 2px;
+                transition: 0.5s;
+            }
+
+            label {
+                position: absolute;
+                color: #aaa;
+                left: 10px;
+                font-size: 1rem;
+                bottom: 8px;
+                transition: all .2s;
+            }
+
+            input:focus ~ label, input:not(:placeholder-shown) ~ label {
+                font-size: 1rem;
+                bottom: 40px;
+                color: #666;
+            }
+
+            input:focus ~ span, input:not(:placeholder-shown) ~ span {
+                width: 100%;
+            }
+        }
+
+
+        .login-check {
+            margin-top: 10px;
+
+            .screen-reader {
+                /* 스크린 리더를 고려해서 체크박스를 화면에서 숨김 */
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                padding: 0;
+                border: 0;
+                overflow: hidden;
+                margin: -1px;
+                clip-path: inset(50%);
+            }
+
+            .label-box {
+                position: relative;
+            }
+
+            .check-icon {
+                width: 1.2em;
+                height: 1.2em;
+                border-radius: 50%;
+                background-color: #eee;
+                border: 1px solid #eee;
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            .check-icon::before {
+                content: "";
+                position: absolute;
+                width: 30%;
+                height: 45%;
+                left: 50%;
+                top: 50%;
+                transform: translateX(-50%) translateY(-70%) rotateZ(40deg);
+                border-right: 2px solid #bbb;
+                border-bottom: 2px solid #bbb;
+            }
+
+            .label-box label {
+                padding-left: 2em;
+                position: relative;
+                cursor: pointer;
+                color: #aaa;
+            }
+
+            .login-idcheck[type="checkbox"]:checked+.label-box .check-icon {
+                border-color: #000;
+                background-color: #000;
+            }
+
+            .login-idcheck[type="checkbox"]:checked+.label-box .check-icon::before {
+                border-color: #fff;
+            }
+        }
+
+        .input-btn{
+            width: 100%;
+            height: 60px;
+            margin: 50px 0;
+            border: 1px solid #000;
+            background: #000;
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        .input-btn:hover{
+            color: #000;
+            background: #fff;
+        }
+
+        button{
+            background: none;
+            border: 0;
+        }
+
+        .login-option{
+            @include g.myFlex($jc: center, $gap: 0);
+            color: g.$text-sub;
+            div{
+                a{
+                    line-height: 1.5;
+                    vertical-align: middle;
+                }
+            }
+
+            div+div {
+                &::before {
+                    content: "";
+                    margin: 0 30px;
+                    display: inline-block;
+                    width: 0;
+                    height: 0.8em;
+                    vertical-align: middle;
+                    border-left: 1px solid #999;
+                }
+            }
+        }
+
+        .or-line{
+            margin: 30px 0;
+            text-align: center;
+            position: relative;
+            color: #999;
+
+            &::after, &::before{
+                content: "";
+                display: block;
+                position: absolute;
+                width: 40%;
+                height: 0.5px;
+                background: #aaa;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            &::before{
+                left: 0;
+            }
+            &::after{
+                right: 0;
+            }
+        }
+
+        .login-sns-box{
+            text-align: center;
+            color: g.$text-sub;
+
+            .login-sns{
+                @include g.myFlex($jc: center, $gap: 30px);
+                margin-top: 20px;
+
+                >div{
+                    cursor: pointer;
+                }
+            }
+        }
+        .err-box{
+            position: relative;
+            p{
+                position: absolute;
+                width: 100%;
+                height: 20px;
+                top: 20px;
+                left: 0;
+                font-size: 0.88em;
+                padding-left: 10px;
+                color: g.$text-sale;
+                text-align: center
+            }
+        }
+
+        .banner-item {
+            margin-top: 50px;
+            overflow: hidden;
+            width: 120%;
+            position: relative;
+            display: flex;
+            left: 50%;
+            transform: translateX(-50%);
+
+            .text-box {
+                padding: 24px;
+                white-space: pre-line;
+                position: absolute;
+                top: 50%;
+                left: 0%;
+                transform: translate(0%, -50%);
+
+                .text1 {
+                    // font-weight: 700;
+                    font-size: 1.25em;
+                }
+
+                .text2 {
+                    margin-top: 4px;
+                    font-weight: lighter;
+                    font-size: 0.88em;
+                }
+            }
+        }
+        .modal-wrap{
+            position: fixed;
+            inset: 0;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.45); 
+            backdrop-filter: blur(5px); 
+        
+            .modal-overlay{
+                @include g.pos-center();
+                @include g.myFlex($jc: center, $gap: unset);
+                width: 700px;
+                height: 300px;
+                border: 10px solid g.$text-main;
+                background: #fff;
+                z-index: 10;
+                animation: fadeInLogin 0.5s ease-in-out forwards;
+                border-radius: 40px;
+
+                &::before{
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    left: -15px;
+                    bottom: -12px;
+                    background-image: url("/images/login/casetify-left.png");
+                    width: 100px;
+                    height: 100px;
+                    background-size: cover;
+                }
+                &::after{
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    right: -17px;
+                    top: -16px;
+                    background-image: url("/images/login/casetify-right.png");
+                    width: 100px;
+                    height: 100px;
+                    background-size: cover;
+                }
+                .modal-content{
+                    width: 80%;
+                    margin: 0 auto;
+                    text-align: center;
+
+                    .input-btn{
+                        margin: 10px 0;
+                    }
+                }
+                &.active{
+                    height: 200px;
+                    border: 1px solid g.$text-strike;
+                }
+            }
+        }
+
+        @keyframes fadeInLogin {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    }
+}
+
+.join-wrap{
+    .inner{
+        max-width: 900px;
+    
+        input{
+            font-size: 1rem;
+            color: #222222;
+            width: 100%;
+            border: solid #aaaaaa 1px;
+            padding: 10px;
+            background: none;
+            z-index: 1;
+        }
+
+        input::placeholder { color: #aaaaaa; }
+        input:focus { outline: none; }
+
+        input:read-only{
+            background: #ddd;
+        }
+
+        .join-progress{
+            @include g.myFlex($jc: center, $gap: 70px);
+            margin-bottom: 50px;
+            position: relative;
+
+            &::before{
+                content: "";
+                display: block;
+                height: 1px;
+                width: 40%;
+                position: absolute;
+                background: #eee;
+            }
+            li{
+                background: #eee;
+                border-radius: 50%;
+                width: 80px;
+                height: 80px;
+                position: relative;
+                text-align: center;
+
+                &.active{
+                    background: #000000;
+                    img{
+                        filter: brightness(0) invert(1);
+                    }
+                }
+                >div{
+                    @include g.myFlex($jc: center, $gap: unset);
+                    height: 100%;
+                }
+                span{
+                    position: absolute;
+                    width: 100px;
+                    bottom: -20px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    font-size: 0.7em;
+                }
+            }
+        }
+
+        .line-b{
+            border-bottom: #ddd 1px solid;
+        }
+
+        .input-box{
+            @include g.myFlex($jc: start, $gap: unset);
+            padding: 30px 0;
+            .label-div{
+                width: 30%;
+                text-align: center;
+                span{
+                    color: g.$text-sale;
+                    font-size: 0.7em;
+                    padding-left: 5px;
+                }
+            }
+            .input-div{
+                width: 100%;
+                margin-top: 0;
+                // position: relative;
+
+                .eye-btn{
+                    right: 20%;
+                    bottom: 50%;
+                    transform: translateY(50%);
+                }
+                input{
+                    border: 1px solid #aaa;
+                    width: 80%;
+                }
+                p{
+                    position: absolute;
+                    width: 100%;
+                    height: 20px;
+                    bottom: -25px;
+                    left: 0;
+                    font-size: 0.88em;
+                    padding-left: 10px;
+                    color: g.$text-sale;
+                }
+
+                .zonecode-box{
+                    @include g.myFlex($jc: start, $gap: unset);
+                    .zonecode-btn{
+                        padding: 10px 20px;
+                        background: #000;
+                        color: #fff;
+                        margin-left: 10px;
+                    }
+                }
+                
+            }
+            .address-box{
+                >input{
+                    margin-top: 10px;
+                }
+            }
+            .react-datepicker-wrapper{
+                width: 100%;
+            }
+            .react-datepicker-popper {
+                z-index: 10;
+            }
+        }
+
+        .agree-wrap{
+            text-align: center;
+            margin-top: 15px;
+            >div{
+                display: inline-block;
+                .agree-box{
+                    @include g.myFlex($jc: start, $gap: 10px);
+                    margin-bottom: 5px;
+                    input{
+                        width: auto;
+                    }
+                    button{
+                        padding: 1px;
+                        border: 1px solid #ccc;
+                        border-radius: 2px;
+                        margin-left: 10px;
+                        color: #999;
+                    }
+                    .label-box{
+                        label{
+                            color: g.$text-sub;
+                        }
+                    }
+                }
+            }
+        }
+        .input-btn-box{
+            text-align: center;
+            position: relative;
+
+            .input-btn{
+                width: 500px;
+            }
+            
+            p{
+                position: absolute;
+                width: 100%;
+                height: 20px;
+                top: 20px;
+                left: 0;
+                font-size: 0.88em;
+                padding-left: 10px;
+                color: g.$text-sale;
+                text-align: center
+            }
+        }
+        .post-modal{
+            .close-btn{
+                margin: 5px 0;
+            }
+        }
+
+        .complete-msg{
+            margin: 180px 0;
+            text-align: center;
+            font-size: 2em;
+
+            &::after{
+                content: "";
+                background-image: url("/images/waveBg-orange.png");
+                background-size: cover;
+                display: block;
+                width: 100vw;
+                height: 500px;
+                position: absolute;
+                left: 0;
+            }
+            &.join-complete::after{
+                background-image: url(/images/waveBg-yellow.png);
+                top: 30%;
+                transform: rotate(10deg) scale(1.1);
+                height: 800px;
+                z-index: -1;
+                opacity: 0.5;
+            }
+            .input-btn{
+                width: 500px;
+            }
+            .coupon{
+                font-size: 0.88em;
+                color: g.$text-sale;
+                background: #FFE3E3;
+                padding: 5px 15px;
+                margin-bottom: 20px;
+                display: inline-block;
+            }
+        }
+
+        .modal-agree{
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translateX(-50%);
+            @include g.myFlex($jc: center, $gap: unset);
+            width: 500px;
+            height: 500px;
+            border: 1px solid g.$text-strike;
+            background: #fff;
+            z-index: 10;
+            animation: fadeInLogin 0.5s ease-in-out forwards;
+
+            .modal-agree-content{
+                width: 80%;
+                margin: 0 auto;
+                text-align: center;
+
+                .modal-div{
+                    height: 280px;
+                    overflow-y: scroll;
+                }
+
+                ul{
+                    li{
+                        margin-bottom: 20px;
+                        button{
+                            width: 100%;
+                            border: 1px solid g.$text-strike;
+                            padding: 10px 0;
+                            position: relative;
+
+                            &::after{
+                                content: "";
+                                position: absolute;
+                                left: 90%;
+                                width: 20px;
+                                height: 20px;
+                                transform: rotate(90deg) translateY(-50%);
+                                background: url(/images/icon/icon-arrow-right.svg) no-repeat;
+                            }
+                        }
+                        >div{
+                            height: 0;
+                            overflow-y: hidden;
+
+                            &.active{
+                                height: 280px;
+                                overflow-y: scroll;
+                            }
+                        }
+                    }
+                }
+                .input-btn{
+                    margin: 10px 0;
+                }
+            }
+            &.active{
+                height: 200px;
+                border: 1px solid g.$text-strike;
+            }
+        }
+    }
+}
+
+.join-complete-wrap{
+    position: relative;
+    .case1{
+        position: absolute;
+        width: 630px;
+        height: 630px;
+        left: 10%;
+        top: 50%;
+        transform: translateY(-50%);
+        img{
+            animation: float-up 2s ease-in-out infinite;
+        }
+    }
+    .case2{
+        position: absolute;
+        width: 315px;
+        height: 315px;
+        left: 10%;
+        top: 60%;
+        img{
+            animation: float-down 2s ease-in-out infinite;
+        }
+    }
+}
+
+@keyframes float-up {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px); /* 위로 20px 이동 */
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes float-down {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(20px); /* 아래로 20px 이동 */
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

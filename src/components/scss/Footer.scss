@@ -1,0 +1,242 @@
+@use "../../App.scss" as g;
+
+footer {
+    // border-top: 1px dashed skyblue;
+    background-color: black;
+    color: white;
+    font-size: 0.88em;
+    position: relative;
+    overflow: hidden;
+    margin-top: g.$section-gap;
+    font-family: "Pretendard", sans-serif;
+
+    &.no-margin-top {
+        margin-top: 0;
+    }
+
+    .inner {
+        max-width: 1440px;
+        // background-color: rgba(255, 0, 0, 0.1);
+        padding: 95px 0;
+        padding-bottom: 150px;
+        @include g.myFlex($ai: normal);
+
+        .footer-left {
+            @include g.myFlex($fd: column, $gap: 32px, $jc: flex-start, $ai: baseline);
+
+            .casetify-15th-anniversary {
+                @include g.myFlex($gap: 10px);
+
+                img {
+                    height: 48px;
+                }
+            }
+
+            .sns-list-wrap {
+                text-align: center;
+
+                p {
+                    margin-bottom: 5px;
+                }
+
+                .sns-list {
+                    @include g.myFlex($jc: center, $gap: 8px);
+
+                    a {
+                        display: inline-block;
+                        background: white;
+                        width: 26px;
+                        height: 26px;
+                        padding: 4px;
+                        border-radius: 50%;
+                        line-height: 1;
+
+                        img {
+                            width: 100pc
+                        }
+                    }
+                }
+            }
+
+            .app-info-wrap {
+                @include g.myFlex($ai: flex-start, $gap: 20px);
+
+                .mobile-app-colab,
+                .mobile-app {
+                    @include g.myFlex($fd: column, $ai: center, $gap: 8px);
+                    text-align: center;
+
+                    >img {
+                        width: 40px;
+                    }
+
+                    .text-area>p {
+                        color: #585858;
+                    }
+
+                    .app-store-bedge {
+                        @include g.myFlex($ai: flex-start, $gap: 20px);
+
+                        img {
+                            width: 100px;
+                            margin-bottom: 4px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .footer-right {
+            @include g.myFlex($gap: 32px, $ai: flex-start);
+
+            .title {
+                font-weight: 500;
+                margin-bottom: 10px;
+            }
+
+            .info-list {
+                font-weight: 100;
+                @include g.myFlex($gap: 5px, $fd: column, $ai: flex-start);
+            }
+
+            .company-info {
+
+                .payment {
+                    display: flex;
+                    gap: 10px;
+                    margin: 20px 0;
+
+                    li {
+                        height: 32px;
+
+                        img {
+                            display: block;
+                            background: white;
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            // border-radius: 4px;
+                        }
+                    }
+                }
+
+                .remark {
+                    font-weight: 100;
+
+                    a+a {
+                        &::before {
+                            content: "";
+                            margin: 0 0.6em;
+                            display: inline-block;
+                            width: 0;
+                            height: 0.8em;
+                            vertical-align: middle;
+                            border-left: 1px solid white;
+                        }
+                    }
+                }
+
+                .copy {
+                    margin-top: 5px;
+                    font-weight: 100;
+                }
+            }
+
+            .cs-info {
+                .contact-list {
+                    margin-bottom: 16px;
+                }
+
+            }
+
+        }
+    }
+
+    .footer-title {
+        font-family: "Italiana", sans-serif;
+        font-size: 10rem;
+        color: #737373;
+        text-align: center;
+        text-wrap: nowrap;
+        position: absolute;
+        bottom: -35px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+}
+
+.top-btn {
+    width: 60px;
+    height: 60px;
+    padding: 4px;
+    background: #585858;
+    color: white;
+    @include g.myFlex($jc: normal, $gap: 4px, $fd: column);
+    font-size: 0.75em;
+    border-radius: 50%;
+    display: none;
+    position: fixed;
+    right: 32px;
+    bottom: 40px;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 1000;
+
+    &:hover {
+        transform: translateY(-5px);
+    }
+
+    &.active {
+        display: inline-flex;
+    }
+
+    img {
+        width: 24px;
+    }
+}
+
+.aside-custom-btn{
+    width: 60px;
+    height: 60px;
+    padding: 4px;
+    background: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    @include g.myFlex($jc: center, $gap: 4px, $fd: column);
+    font-size: 0.75em;
+    border-radius: 50%;
+    // display: block;
+    position: fixed;
+    right: 32px;
+    bottom: 200px;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 1000;
+
+    >div{
+        display: block;
+        width: 80%;
+    }
+
+    p{
+        display: none;
+        font-size: 0.88em;
+        position: absolute;
+        text-align: center;
+        width: 60px;
+        color: g.$text-main;
+        background: #ffffffad;
+        border-radius: 30px;
+        left: 0;
+        transform: translateY(-50%);
+        top: 50%;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+      p{
+        display: block;
+      }
+    }
+
+}

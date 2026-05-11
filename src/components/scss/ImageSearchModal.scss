@@ -1,0 +1,78 @@
+@use "../../App.scss" as g;
+
+.img-search-modal-overlay {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    // display: unset;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2.6px);
+    z-index: 21;
+
+    &.active {
+        display: block;
+    }
+
+    .img-search-modal-wrap {
+        @include g.pos-center();
+        width: 80%;
+        max-width: 800px;
+        min-height: 320px;
+        height: auto;
+        max-height: 80%;
+        background-color: white;
+        padding: 1rem 1rem 2rem;
+        border-radius: 1em;
+        box-shadow: 0 0 0.625em rgba(0, 0, 0, 0.3);
+
+        .img-upload-content {
+            .img-search-modal-header {
+                @include g.myFlex($jc: center, $gap: null);
+                margin-bottom: 1.25rem;
+                position: relative;
+
+                .modal-title {
+                    @include g.myFlex($jc: null, $gap: null);
+                    gap: 0.5rem;
+                    font-weight: 600;
+                }
+
+                .close-btn {
+                    position: absolute;
+                    top: 0;
+                    right: 0.25rem;
+                }
+            }
+
+            .img-search-modal-content {
+                // background-color: skyblue;
+                padding: 0 2rem;
+
+                .dropbox-wrap {
+                    position: relative;
+                    @include g.myFlex($jc: center, $gap: null);
+                    width: 100%;
+                    aspect-ratio: 1.8;
+                    line-height: 1.25;
+                    border-radius: 0.75rem;
+                    border: 2px dashed #d9d9d9;
+
+                    .upload-btn-text-wrap {
+                        @include g.myFlex($jc: center, $gap: 0.625em, $fd: column);
+
+                        .plus-btn {
+                            @include g.myFlex($jc: center, $gap: null);
+                            width: 3em;
+                            height: 3em;
+                            background-color: #eee;
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+}

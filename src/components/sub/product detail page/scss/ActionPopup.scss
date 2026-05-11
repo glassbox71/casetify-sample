@@ -1,0 +1,84 @@
+.popup-overlay {
+    touch-action: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 9999;
+
+    .popup-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 500px;
+        height: 250px;
+        border: 1px solid #ddd;
+        background: #fff;
+        z-index: 10;
+        animation: popupFadeIn 0.25s ease-in-out forwards;
+
+        .popup {
+            width: 80%;
+            margin: 0 auto;
+
+            > p {
+                margin: 30px 0;
+                text-align: center;
+                font-size: 15px;
+                line-height: 1.6;
+            }
+
+            .popup-buttons {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+
+                button {
+                    padding: 12px 20px;
+                    transition: 0.2s;
+                    width: 100%;
+                    height: 60px;
+                    margin: 20px 0;
+                    border: 1px solid #000;
+                    background: #000;
+                    color: #fff;
+                    font-size: 1rem;
+                    cursor: pointer;
+
+                    &:hover {
+                        color: #000;
+                        background: #fff;
+                    }
+                }
+
+                .btn-go-wish {
+                    background: #eee;
+                    border-color: #eee;
+                    color: #000;
+
+                    &:hover {
+                        border: 1px solid #000;
+                        background: #fff;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes popupFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

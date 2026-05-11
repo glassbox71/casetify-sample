@@ -1,0 +1,78 @@
+@use "../../../App.scss" as g;
+
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.gift-card-popup {
+  background: #fff;
+  width: 90%;
+  max-width: 500px;
+  padding: 30px;
+  text-align: center;
+  position: relative;
+
+  .close-btn{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+  }
+
+  .popup-header {
+    h2 { font-size: 20px; font-weight: bold; margin: 10px 0; }
+    .card-icon { font-size: 30px; }
+  }
+
+  .popup-description {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #333;
+    margin-bottom: 20px;
+    a { text-decoration: underline; cursor: pointer; }
+  }
+
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+
+    input {
+      height: 50px;
+      padding: 0 15px;
+      border: 1px solid #000;
+      font-size: 15px;
+    }
+    input:focus { outline: none; }
+  }
+
+  .popup-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    p{
+        color: g.$text-sale;
+    }
+
+    button {
+      height: 50px;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+    }
+
+    .confirm-btn { background: #000; color: #fff; border: 1px solid #000;
+    &:hover{
+        background: #FFF; color: #000;
+    }}
+    .cancel-btn { background: none; color: #333; }
+  }
+}

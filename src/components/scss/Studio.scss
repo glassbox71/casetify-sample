@@ -1,0 +1,85 @@
+@use "../../App.scss" as g;
+
+.studio-info {
+    margin-top: 200px;
+    position: relative;
+    height: 750px;
+
+    &::after {
+        content: "";
+        background-image: url("/images/waveBg-yellow.png");
+        background-position-x: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+        display: block;
+        position: absolute;
+        top: 55%;
+        left: 0;
+        transform: translateY(-50%);
+        aspect-ratio: 90 / 40;
+        z-index: -1;
+    }
+
+    .inner {
+        @include g.myFlex($jc: center, $ai: center, $gap: unset);
+        // margin-top: 36px;
+
+        >div {
+            flex: 1;
+        }
+
+        .img-box {
+            // border-radius: 20px;
+            overflow: hidden;
+            img{
+                width: 720px;
+                aspect-ratio: 1 / 0.83;
+                object-fit: cover;
+            }
+        }
+
+        .txt-box {
+            @include g.myFlex($fd: column, $ai: normal);
+            font-family: "Pretendard", sans-serif;
+
+            h3{
+                font-size: 1.75em;
+            }
+
+            .stdio-feature {
+                @include g.myFlex($fd: column, $gap: 0, $ai: normal);
+                margin: 0 auto;
+                font-size: 1.5em;
+                margin-bottom: 16px;
+
+                .title{
+                    margin-bottom: 24px;
+                    font-size: 1.75rem;
+                    font-weight: 700;
+                }
+            }
+
+            .studio-search {
+                display: block;
+                margin: 20px auto 0;
+                color: g.$text-main;
+                text-align: center;
+                line-height: 40px;
+                background: white;
+                width: 260px;
+                height: 40px;
+                border: 1px solid #2d2d2d;
+                cursor: pointer;
+                font-size: 0.88em;
+
+                // 그라디언트 선 색상
+                &:hover {
+                    background: linear-gradient(white, white) padding-box,
+                        linear-gradient(to right, #F7A093, #135EAB) border-box;
+                    border-color: transparent;
+                }
+            }
+        }
+    }
+}

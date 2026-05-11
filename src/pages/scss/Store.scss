@@ -1,0 +1,294 @@
+@use "../../App.scss" as g;
+
+.store-page {
+    .store-title {
+        padding-top: 1.25em;
+    }
+
+    &.sub-page-wrap {
+        margin-bottom: 0;
+        padding-bottom: 0;
+
+        .store-map-wrap {
+            width: 100%;
+            height: calc(100vh - 80px);
+            margin-top: 80px;
+            position: relative;
+        }
+
+        .store-info-wrap {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            width: 500px;
+            font-family: "Pretendard", sans-serif;
+            z-index: 1;
+
+            //배경 디버깅
+            // background: rgba(255, 0, 0, 0.1);
+
+            // 지도 드래그 허용
+            pointer-events: none;
+
+            .store-info-innerWrap {
+                padding: 1rem;
+                background-color: white;
+                border: 1px solid #a9a9a9;
+
+                //배경 디버깅
+                // background: rgba(255, 0, 0, 0.1);
+
+                // 지도 이벤트 허용
+                pointer-events: auto;
+                user-select: none;
+                -webkit-user-drag: none;
+
+                img {
+                    pointer-events: none;
+                    user-select: none;
+                }
+
+                // 지도 이벤트 처리
+                .store-search-wrap,
+
+                .store-select-wrap,
+                .store-list-pager,
+                input,
+                button {
+                    pointer-events: auto;
+                }
+
+                // 매장 검색 영역
+                .store-search-wrap {
+                    display: flex;
+                    position: relative;
+                    margin-bottom: 1rem;
+
+                    label {
+                        display: flex;
+                        flex: 1;
+                        position: relative;
+                    }
+
+                    input {
+                        flex: 1;
+                        padding: 0.625rem 1.25rem;
+                        padding-left: 1.5rem;
+                        width: 100%;
+                        font-family: inherit;
+                        font-weight: 300;
+                        font-size: 1rem;
+                        border: 1px solid #c3c3c3;
+
+                        &:focus {
+                            outline: none;
+                        }
+
+
+
+                    }
+
+
+                    .btn-search {
+                        position: absolute;
+                        right: 10px;
+                        top: 50%;
+                        transform: translateY(-50%);
+
+                        img {
+                            width: 80%;
+                        }
+                    }
+                }
+
+                // 지역 선택 영역
+                .store-select-wrap {
+                    @include g.myFlex($gap: 1.25rem);
+                    margin-bottom: 1.25rem;
+                    justify-content: space-between;
+
+                    >div {
+                        position: relative;
+                    }
+
+                    .city-select {
+                        flex: 1;
+
+                        .select-btn {
+                            .arrow>img {
+                                transition: transform 0.2s;
+                            }
+
+                            .arrow.active>img {
+                                transform: rotate(180deg);
+                            }
+
+                        }
+                    }
+
+                    .near-list {
+                        flex: 0.6;
+
+                        .select-btn {
+                            transition: 0.125s ease-in-out;
+                        }
+
+
+                        &.active {
+                            .select-btn {
+                                color: white;
+                                // 배경 흑백 적용
+                                background-color: g.$text-sub;
+                                border-color: g.$text-sub;
+                                // 컬러 적용 피드백 시 적용
+                                // background-color: g.$color-blue;
+                                // border-color: g.$color-blue;
+                            }
+
+                        }
+
+                        .select-btn {
+                            justify-content: center;
+                        }
+                    }
+
+                    // 드롭박스 검색 버튼
+                    .select-btn {
+                        font-family: inherit;
+                        font-size: 0.875rem;
+                        @include g.myFlex($jc: null, $gap: 0.5rem);
+                        width: 100%;
+                        padding: 0.5rem 1rem;
+                        position: relative;
+                        border: 1px solid #8f8f8f;
+                        // border-radius: 4px;
+
+                        &:focus {
+                            outline: none;
+                        }
+
+                        .arrow {
+                            position: absolute;
+                            top: 50%;
+                            right: 4px;
+                            transform: translateY(-50%);
+                        }
+                    }
+                }
+
+                // 지역 리스트
+                .store-city-list {
+                    @include g.myFlex($jc: null, $ai: null, $gap: 0.75rem, $fd: column);
+                    min-height: calc((4rem * 4) + (0.75rem * 3) + 1rem);
+                    margin-bottom: 1.25rem;
+                    pointer-events: auto;
+
+                    li {
+                        @include g.myFlex($gap: 0.25rem);
+                        padding: 0.75rem 0.25rem;
+                        cursor: pointer;
+                        transition: 0.15s ease-in-out;
+
+                        &:hover {
+                            background-color: rgba(88, 88, 88, 0.12);
+                        }
+
+                        .store-list-area {
+                            flex: 1;
+
+                            p {
+                                color: g.$text-sub;
+                                margin-top: 0.125rem;
+                                font-size: 0.9375rem;
+                                @include g.multi-ellipsis($lines: 1)
+                            }
+                        }
+
+                        .store-distance-area {
+                            width: 15%;
+                            text-align: right;
+
+                            p {
+                                font-size: 0.75rem;
+                                font-weight: 600;
+                                color: g.$color-blue;
+                            }
+                        }
+                    }
+                }
+
+                // 페이지 전환
+                .store-list-pager {
+                    @include g.myFlex($jc: center, $gap: 1.5rem);
+
+                    button {
+                        font-family: inherit;
+                        font-size: 1.25rem;
+
+                        cursor: pointer;
+
+                        //화살표 이미지
+                        img {
+                            filter: brightness(0.2);
+                            transition: 0.25s ease-in-out;
+                        }
+
+                        &.disabled {
+                            cursor: default;
+
+                            img {
+                                filter: brightness(1.5);
+                            }
+                        }
+                    }
+
+                    .pager-btn-area {
+                        button {
+                            padding: 0.25rem;
+                            width: 3rem;
+                            height: 3rem;
+
+                            &.active {
+                                font-weight: 600;
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+}
+
+.city-list {
+    position: absolute;
+    background: white;
+    border: 1px solid #8f8f8f;
+    border-top: none;
+    padding: 20px;
+    // line-height: 2.2;
+    width: 100%;
+    z-index: 3;
+
+    li {
+        button {
+            font-family: inherit;
+            font-size: 0.875rem;
+            display: block;
+            text-align: left;
+            width: 100%;
+            line-height: 2;
+            padding: 0.25rem 0;
+
+            // 배경 디버깅
+            // background-color: rgba(255, 0, 0, 0.12);
+        }
+
+        margin-bottom: 0.25rem;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+}

@@ -1,0 +1,99 @@
+.change {
+  margin-top: 80px;
+
+  h3 {
+    font-size: 1.25em;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+
+.top-btns {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+
+  button {
+    padding: 8px 14px;
+    border: 1px solid #ccc;
+    background: #fff;
+    cursor: pointer;
+    font-size: 13px;
+    transition: border-color 0.2s, color 0.2s;
+
+    &:hover {
+      border-color: #111;
+      color: #111;
+    }
+
+    &.on {
+      border-color: #111;
+      border-width: 1px;
+      font-weight: 600;
+      color: #111;
+    }
+  }
+}
+  // 아코디언
+  .faq-accordion {
+      border-top: 1px solid #e6e6e6;
+  }
+
+  .faq-item {
+      border-bottom: 1px solid #e6e6e6;
+
+      &.open {
+          .faq-chevron {
+              transform: rotate(180deg);
+          }
+      }
+  }
+
+  .faq-question {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 4px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #2f2f2f;
+
+      span {
+          flex: 1;
+          line-height: 1.5;
+      }
+  }
+
+  .faq-chevron {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      color: #585858;
+      transition: transform 0.25s ease;
+  }
+
+  .faq-answer {
+      padding: 0 4px 24px;
+
+      p {
+          background: #f7f7f7;
+
+          padding: 16px 20px;
+          font-size: 0.9rem;
+          line-height: 1.7;
+          color: #585858;
+      }
+  }
+
+  .faq-empty {
+      padding: 40px 0;
+      text-align: center;
+      color: #ababab;
+      font-size: 0.95rem;
+  }
+}

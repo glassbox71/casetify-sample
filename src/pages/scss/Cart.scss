@@ -1,0 +1,532 @@
+@use "../../App.scss" as g;
+
+.cart-page-wrap {
+    .inner {
+        padding-top: 72px;
+
+        .title-wrap {
+            // border: 2px dashed darkblue;
+
+            h2 {
+                font-weight: normal;
+                font-size: 2.5em;
+                text-align: center;
+            }
+
+            .payment-progress-wrap {
+                @include g.myFlex($jc: center, $ai: center, $gap: 6.25em);
+                margin-top: 40px;
+
+                .payment-progress-item {
+                    @include g.myFlex($jc: normal, $fd: column, $ai: center, $gap: 1.25em);
+                    position: relative;
+
+                    &:not(:last-child)::after {
+                        content: "";
+                        position: absolute;
+                        top: 50px; // icon-box의 절반크기
+                        left: 50%; // 원형의 중심부터 시작
+                        width: calc(100% + 6.25em); // li tag + gap 크기 (calc(100% + 간격))
+                        height: 4px;
+                        background-color: #e8e8e8;
+                        z-index: -1;
+                    }
+
+                    .icon-box {
+                        @include g.myFlex($jc: center, $ai: center, $gap: null);
+                        background-color: #f8f8f8;
+                        width: 100px;
+                        height: 100px;
+                        border-radius: 50%;
+
+                        img {
+                            width: 2.5em;
+                        }
+                    }
+
+                    p {
+                        font-size: 1.25em;
+                    }
+
+                    &.active {
+                        .icon-box {
+                            background-color: #222222;
+
+                            img {
+                                filter: brightness(0) invert(1); //아이콘 흰색 처리
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .cart-list-wrap {
+            // border: 2px dashed green;
+            @include g.myFlex($jc: normal, $ai: normal, $gap: 1.25em);
+            margin-top: 6.25em;
+            position: relative;
+            font-family: "Pretendard", sans-serif;
+
+
+            // 제목 공통
+            .cart-list-area>.cart-title,
+            .payment-ctrl-area>.cart-title {
+                @include g.myFlex($gap: null);
+                padding: 0.75em 1em;
+                border-top: 2px solid #b4b4b4;
+                border-bottom: 2px solid #b4b4b4;
+                margin-bottom: g.$group-gap;
+            }
+
+            // 좌측 - 장바구니 상품 리스트 
+            .cart-list-area {
+                // border: 1px dashed pink;
+                flex: 1;
+
+                // 체크박스
+                .checkbox-label {
+                    height: 20px;
+                    input {
+                        display: none;
+                    }
+
+                    .checkbox-icon {
+                        display: inline-block;
+                        width: 21px;
+                        height: 21px;
+
+                        &.off {
+                            background: url("/images/icon/btn_checkbox_off.svg") no-repeat center/contain;
+                        }
+
+                        &.on {
+                            background: url("/images/icon/btn_checkbox_on.svg") no-repeat center/contain;
+                        }
+                    }
+                }
+
+
+                // 제목
+                .cart-title {
+                    padding-right: 3em;
+
+                    .cart-title-left {
+                        @include g.myFlex($gap: 15em);
+                    }
+
+                    .cart-title-right {
+                        @include g.myFlex($gap: 5em);
+                    }
+                }
+
+                // 장바구니 항목
+                .cart-item-list {
+                    .cart-item {
+                        border-bottom: 1px solid #ccc;
+                        @include g.myFlex($jc: normal, $ai: flex-start, $gap: 1.5em);
+                        padding-left: 1em;
+                        margin-bottom: g.$title-gap;
+
+                        // 장바구니 아이템 (체크박스 이후)
+                        .cart-card-wrap {
+                            // border: 1px solid #989898;
+                            @include g.myFlex($ai: center, $gap: 20px);
+                            flex: 1;
+                            // background-color: #f5f5f5;
+                            padding: 1.5em;
+
+                            // 제품사진, 정보
+                            .cart-goods-info {
+                                @include g.myFlex($jc: normal, $ai: normal, $gap: 2em);
+                                flex: 1;
+
+                                .goods-img {
+                                    width: 220px;
+                                    background: white;
+                                    img{
+                                        aspect-ratio: 1/1;
+                                        object-fit: contain;
+                                    }
+                                }
+
+                                .goods-text {
+                                    flex: 1;
+                                    @include g.myFlex($ai: flex-start, $fd: column, $gap: null);
+
+                                    .title {
+                                        font-size: 1.25em;
+                                        margin-top: 0.375em;
+                                    }
+
+                                    .goods-detail-product {
+                                        font-family: "Pretendard", sans-serif;
+                                        color: g.$text-sub;
+
+                                        >p {
+                                            margin-bottom: 0.625em;
+                                        }
+
+                                        >p:last-child {
+                                            margin-bottom: 0;
+                                        }
+                                    }
+
+                                    button {
+                                        background-color: #e6e6e6;
+                                        padding: 0.375em 0.75em;
+                                    }
+                                }
+                            }
+
+                            // 제품수량, 가격
+                            .cart-goods-count-price {
+                                @include g.myFlex($gap: 1.25em);
+
+                                //수량 버튼
+                                .cart-count-ctrl {
+                                    // border: 1px solid black;
+                                    padding: 0.25em 0.75em;
+                                    background-color: #e6e6e6;
+                                    font-family: "Pretendard", sans-serif;
+
+                                    button {
+                                        // border: solid #222222;
+                                        padding: 0.125em 0.75em;
+                                        font-family: inherit;
+                                    }
+
+                                    span {
+                                        margin: 0 0.5em;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .option-overlay{
+                    touch-action: none;
+                    position: fixed;   /* 스크롤과 상관없이 화면에 고정 */
+                    top: 0;
+                    left: 0;
+                    width: 100%; 
+                    height: 100vh;   
+                    
+                    @include g.myFlex($jc: center, $gap: unset);
+                    z-index: 9999;
+
+                    .option-modal{
+                        // @include g.pos-center();
+                        @include g.myFlex($jc: center, $gap: unset);
+                        width: 500px;
+                        // height: 400px;
+                        border: 1px solid g.$text-strike;
+                        background: #fff;
+                        z-index: 10;
+                        animation: fadeIn 0.5s ease-in-out forwards;
+                        position: relative;
+
+                        .option-box{
+                            width: 80%;
+                            margin: 0 auto;
+                            padding: 20px 0;
+
+                            >div{
+                                margin-bottom: 30px;
+                            }
+
+                            .option-box-title{
+                                @include g.myFlex($gap: unset);
+
+                                .close-btn{
+                                    position: absolute;
+                                    top: 20px;
+                                    right: 20px;
+                                    cursor: pointer;
+                                }
+                            }
+
+                            .model-accordion {
+                                position: relative;
+
+                                .model-accordion-trigger {
+                                    width: 100%;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: space-between;
+                                    padding: 14px 18px;
+                                    border: 1px solid #ddd;
+                                    border-radius: 10px;
+                                    background: #fff;
+                                    font-size: 15px;
+                                }
+
+                                .model-accordion-list {
+                                    position: absolute;
+                                    top: calc(100% + 6px);
+                                    left: 0;
+                                    width: 100%;
+                                    border: 1px solid #e5e5e5;
+                                    border-radius: 14px;
+                                    background: #fff;
+                                    z-index: 100;
+                                    max-height: 520px;
+                                    overflow-y: auto;
+                                    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+
+                                    // ✅ 브랜드 탭
+                                    .model-brand-tabs {
+                                        display: grid;
+                                        grid-template-columns: repeat(3, 1fr); // ✅ 3칸 고정
+                                        gap: 12px;
+                                        padding: 16px;
+                                        position: sticky;
+                                        top: 0;
+                                        background: #fff;
+                                        z-index: 2;
+
+                                        button {
+                                            padding: 10px 18px;
+                                            border-radius: 999px;
+                                            border: 1.5px solid #ddd;
+                                            background: #fafafa;
+                                            font-size: 14px;
+                                            font-weight: 500;
+                                            color: #555;
+                                            cursor: pointer;
+                                            transition: all 0.2s;
+
+                                            &.active {
+                                                border-color: #111;
+                                                background: #111;
+                                                color: #fff;
+                                                font-weight: 600;
+                                            }
+
+                                            &:hover:not(.active) {
+                                                border-color: #bbb;
+                                                background: #fff;
+                                                color: #111;
+                                            }
+                                        }
+                                    }
+
+                                    // ✅ 기종 리스트
+                                    .model-sub-list {
+                                        padding: 12px;
+
+                                        li {
+                                            padding: 16px 18px;
+                                            font-size: 15px;
+                                            color: #222;
+                                            cursor: pointer;
+                                            border-radius: 10px;
+                                            border: 1px solid #e3e3e3;
+                                            margin-bottom: 10px;
+                                            background: #fff;
+                                            transition: all 0.15s;
+
+                                            &:hover {
+                                                border-color: #bbb;
+                                                background: #fafafa;
+                                            }
+
+                                            &.active {
+                                                border-color: #111;
+                                                font-weight: 600;
+                                                background: #fff;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            .detail-colors {
+                                display: flex;
+                                flex-wrap: wrap;
+                                gap: 10px;
+                            }
+
+                            button{
+                                padding: 10px 14px;
+                                border: 1px solid #ddd;
+                                background: #fff;
+                                cursor: pointer;
+                                transition: 0.2s;
+
+                                &.active{
+                                    border-color: #111;
+                                    background: #111;
+                                    color: #fff;
+                                }
+                            }
+
+
+                            .color-chip {
+                                display: inline-block;
+                                width: 14px;
+                                height: 14px;
+                                border-radius: 50%;
+                                margin-right: 6px;
+                                vertical-align: middle;
+                                border: 1px solid #ccc;
+                            }
+
+                            .input-btn{
+                                width: 100%;
+                                height: 60px;
+                                margin-bottom: 10px;
+                                border: 1px solid #000;
+                                background: #000;
+                                color: #fff;
+                                font-size: 1rem;
+                                cursor: pointer;
+                            }
+                            .input-btn:hover{
+                                color: #000;
+                                background: #fff;
+                            }
+                        }
+                    }
+                }
+
+                // 체크박스 취소 버튼
+                .cart-cancel-btn-wrap>button {
+                    border: 1px solid #BFBFBF;
+                    font-family: inherit;
+                    font-size: 1em;
+                    padding: 1em 4em;
+
+                    &:nth-child(1) {
+                        margin-left: 3.5em;
+                    }
+
+                    &:nth-child(2) {
+                        margin-left: 1.25em;
+                    }
+                }
+            }
+
+            // 우측 - 주문 예상 금액 영역
+            .payment-ctrl-area {
+                // border: 1px dashed yellowgreen;
+                width: 342px;
+                position: -webkit-sticky; 
+                position: sticky;
+                top: 20px; 
+                height: max-content; 
+                background-color: #fff;
+                z-index: 10;
+
+                //제목
+                .cart-title {
+                    justify-content: center;
+                }
+
+                // 가격 정보 영역
+                .price-info-wrap {
+                    @include g.myFlex($fd: column, $ai: null);
+                    // background-color: #eeeeee;
+                    border: 1px solid #b4b4b4;
+                    padding: 1.5em;
+                    margin-bottom: 1em;
+
+                    .price-detail {
+                        @include g.myFlex($fd: column, $ai: null, $gap: 0.75em);
+
+                        p {
+                            @include g.myFlex($gap: null);
+                            font-weight: 300;
+
+                            span {
+                                font-weight: 500;
+                            }
+                        }
+                    }
+
+                    .price-total {
+                        @include g.myFlex($fd: column, $ai: null, $gap: 1.25em);
+
+                        .free-info {
+                            text-align: center;
+                            font-size: 0.75em;
+                            font-weight: 300;
+
+                            &::after {
+                                content: "";
+                                display: block;
+                                border-bottom: 1px solid #b4b4b4;
+                                margin-top: 1em;
+                            }
+                        }
+
+                        .est-price {
+                            @include g.myFlex($gap: null);
+                            font-size: 1.125em;
+
+                            span {
+                                color: #ba0000;
+                                font-size: 1.25em;
+                            }
+                        }
+                    }
+                }
+
+                // 주문 버튼
+                .order-btn-wrap {
+                    button {
+                        width: 100%;
+                        padding: 20px 0;
+                        background-color: #eeeeee;
+                        font-family: inherit;
+                        font-size: 1em;
+
+
+                        &.order-all {
+                            color: white;
+                            background-color: #222222;
+                            margin-bottom: 0.625em;
+                        }
+                    }
+
+                }
+            }
+        }
+
+        // 추천 상품 영역
+        .recommend-wrap {
+            // border: 1px dashed lightseagreen;
+            margin-top: 5em;
+
+            h3 {
+                font-weight: normal;
+                font-size: 1.5em;
+                margin-bottom: g.$title-gap;
+            }
+
+            .recommend-item-list {
+                display: grid;
+                grid-template-columns: repeat(5, minmax(0, 1fr));
+                gap: 3.75em;
+
+                .goods-img {
+                    height: 240px;
+                    margin-bottom: 0.5em;
+                }
+
+                .goods-text {
+                    .item-name {
+                        @include g.multi-ellipsis($lines: 1);
+                        color: g.$text-sub;
+                        margin-bottom: 0.5em;
+                    }
+
+                    .item-price {
+                        color: g.$text-strike;
+                    }
+                }
+            }
+        }
+    }
+}

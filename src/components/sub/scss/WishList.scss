@@ -1,0 +1,184 @@
+@use "../../../App.scss" as g;
+
+.wishlist-wrap{
+
+
+    .wish-list {
+        font-family: "Pretendard", sans-serif;
+        margin: g.$title-gap 0;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        justify-items: center;
+        align-items: center;
+        row-gap: 1.75em;
+
+        li {
+            padding: 0.25em;
+            position: relative;
+            .wish-heart{
+                position: absolute;
+                width: 22px;
+                height: 22px;
+                top: 5px;
+                right: 5px;
+            }
+            .card-img {
+                position: relative;
+                width: 100%;
+                // border: 1px solid purple;
+
+                .img {
+                    width: 100%;
+                    height: auto;
+                    object-fit: cover;
+                    display: block;
+                }
+
+                .fav-icon {
+                    position: absolute;
+                    top: 0.5em;
+                    right: 0.5em;
+                    width: 1.5em;
+                }
+            }
+
+            .card-info {
+                width: 100%;
+                margin-top: 0.5em;
+                font-family: "Pretendard", sans-serif;
+                // border: 1px dashed darkblue;
+
+                .card-name {
+                    @include g.multi-ellipsis($lines: 1);
+                    line-height: 1.2;
+                    margin-bottom: 0.5em;
+                }
+
+                .card-price {
+                    @include g.multi-ellipsis($lines: 1);
+                    display: inline-flex;
+                    align-items: center;
+                    line-height: 1.2;
+                    color: g.$text-sub;
+                    margin-bottom: 0.5em;
+                }
+                .card-option{
+                    font-size: 0.88em;
+                    color: g.$text-strike;
+                    p{
+                        span+span {
+                            &::before {
+                                content: "";
+                                margin: 0 10px;
+                                display: inline-block;
+                                width: 0;
+                                height: 0.8em;
+                                vertical-align: middle;
+                                border-left: 1px solid #999;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); // 배경 어둡게
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(2px); // 배경 살짝 흐리게 (선택사항)
+
+        .modal-content {
+            background-color: #fff;
+            padding: 30px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+
+            p {
+            margin-bottom: 25px;
+            color: #000;
+            }
+
+            .modal-buttons {
+            display: flex;
+            gap: 10px;
+
+            button {
+                flex: 1;
+                padding: 12px;
+                border: none;
+                transition: all 0.2s ease;
+
+                &.confirm-btn {
+                background-color: #000;
+                color: #fff;
+                border: 1px solid #000;
+                    &:hover {
+                        background-color: #fff;
+                        color: #000;
+                    }
+                }
+
+                &.cancel-btn {
+                background-color: #f4f4f4;
+                color: #000;
+                border: 1px solid #f4f4f4;
+                &:hover {
+                    background-color: #fff;
+                    border: 1px solid #000;
+                }
+                }
+            }
+            }
+        }
+    }
+
+    .pagination-wrap {
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+        margin: 40px 0;
+
+        button {
+            width: 38px;
+            height: 38px;
+            background: #fff;
+            border: 1px solid #ddd; // 기본 연한 회색 테두리
+            color: #333;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.2s;
+
+            &:hover:not(:disabled) {
+                background-color: #f8f8f8;
+                border-color: #999;
+            }
+
+            &.active {
+                border: 1px solid #333; // 활성화된 번호는 더 굵고 진한 테두리
+                font-weight: 700;
+                color: #000;
+            }
+
+            &:disabled {
+                color: #eee;
+                border-color: #f2f2f2;
+                cursor: not-allowed;
+            }
+        }
+    }
+}

@@ -1,0 +1,108 @@
+@use "../../App.scss" as g;
+
+.MapPopup {
+    position: absolute;
+    max-width: 520px;
+    // top: 50px; // 임시 초기값
+    // left: 600px; // 임시 초기값
+    // transform: translate(-50%, -50%);
+    z-index: 500;
+    border: 1px solid #a9a9a9;
+    background-color: white;
+    overflow: hidden;
+    font-family: "Pretendard", sans-serif;
+
+    // 지도 드래그 허용
+    pointer-events: none;
+    user-select: none;
+
+    // 버튼, 드래그 영역 포인터 이벤트
+    button,
+    .drag-area {
+        pointer-events: auto;
+    }
+
+    // .map-popup-title {
+    //     text-align: center;
+    //     position: relative;
+    //     padding: 12px 0;
+    //     font-weight: 700;
+    //     font-size: 1.25rem;
+    //     box-shadow: 0px 0px 4px 2px rgba($color: #000000, $alpha: 0.25);
+
+    //     button {
+    //         position: absolute;
+    //         top: 50%;
+    //         transform: translateY(-50%);
+    //         right: 1rem;
+
+    //     }
+    // }
+
+    button {
+        position: absolute;
+        top: 1.55rem;
+        right: 1rem;
+        transform: translateY(-50%);
+    }
+
+    h2 {
+        padding-top: 2.375rem;
+        padding-bottom: g.$title-gap;
+        font-size: 1.5rem;
+        text-align: center;
+        @include g.multi-ellipsis($lines: 1);
+    }
+
+    .drag-area {
+        cursor: grab;
+        user-select: none;
+
+        // 배경 디버깅
+        // background-color: rgba(255, 0, 0, 0.16);
+    }
+
+    .drag-area:active {
+        cursor: grabbing;
+    }
+
+    .store-img-area {
+        margin: 0 2rem;
+        border-radius: 1rem;
+        overflow: hidden;
+
+        img {
+            pointer-events: none;
+        }
+    }
+
+    .store-address-area,
+    .store-hours-area {
+        @include g.myFlex($jc: null, $gap: 0.625rem, $fd: column);
+        margin-top: 0.75rem;
+
+        span {
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        p {
+            font-weight: 400;
+            font-size: 1rem;
+        }
+    }
+
+    .store-address-area {
+        padding: 1rem 1.25rem 0;
+    }
+
+    .store-hours-area {
+        // margin: g.$title-gap 0;
+        margin-top: g.$title-gap;
+        padding: 0 1rem 2rem;
+
+        .store-hours-info-area {
+            @include g.myFlex($jc: null, $gap: 0.25rem, $fd: column);
+        }
+    }
+}

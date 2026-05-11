@@ -1,0 +1,395 @@
+@use "../../App.scss" as g;
+
+.brand-auth-page {
+    font-family: "Pretendard", sans-serif;
+    color: g.$text-main;
+
+
+    // ─── 히어로 ───────────────────────────────────────────
+    .auth-hero {
+        position: relative;
+        width: 100%;
+        height: 360px;
+        overflow: hidden;
+        background: #3d3c3c;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.6;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            // background: rgba(0, 0, 0, 0.42);
+            z-index: 1;
+        }
+
+        .auth-hero-text {
+            position: absolute;
+            top: 60%;
+            left: 50%; // ✅ 중앙으로
+            transform: translate(-50%, -50%); // ✅ 중앙으로
+            z-index: 2;
+            text-align: center; // ✅ 텍스트 중앙 정렬
+
+            .auth-hero-sub {
+                font-size: 0.85rem;
+                letter-spacing: 0.25em;
+                color: #fff;
+                margin-bottom: 14px;
+            }
+
+            h2 {
+                font-size: 2.8rem;
+                font-weight: 800;
+                color: #fff;
+                text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+                margin-bottom: 10px;
+            }
+
+            .auth-hero-line {
+                width: 300px;
+                border-bottom: 1px solid #fff;
+                margin: 0 auto 12px; // ✅ 중앙 정렬
+            }
+
+            p:last-child {
+                font-size: 1.1rem;
+                color: #fff;
+                text-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+            }
+        }
+    }
+
+    // ─── 인증방법 섹션 ────────────────────────────────────
+    .auth-steps-section {
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 80px 20px 0;
+    }
+
+    .auth-section-title {
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin-bottom: 40px;
+        color: g.$text-main;
+    }
+
+    .auth-steps {
+        @include g.myFlex($jc: center, $gap: 24px);
+    }
+
+    .auth-step-card {
+        flex: 1;
+        // background: #f7f7f7;
+        padding: 40px 24px 28px;
+
+        .auth-step-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 24px;
+            @include g.myFlex($jc: center);
+            background: #fff;
+            border-radius: 8px;
+
+            img {
+                width: 100px;
+                height: 100px;
+                object-fit: contain;
+            }
+        }
+
+        p {
+            font-size: 1em;
+            color: g.$text-sub;
+            text-align: center;
+            line-height: 1.5;
+        }
+    }
+
+    // ─── 일련번호 입력 섹션 ───────────────────────────────
+    .auth-input-section {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 60px 20px 80px;
+    }
+
+    .auth-input-wrap {
+        @include g.myFlex($jc: center, $gap: 0);
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .auth-serial-input {
+        flex: 1;
+        max-width: 480px;
+        height: 54px;
+        border: 1px solid #ccc;
+        border-right: none;
+        padding: 0 20px;
+        font-size: 0.95rem;
+        font-family: "Pretendard", sans-serif;
+        color: g.$text-main;
+        outline: none;
+        transition: border-color 0.2s;
+
+        &::placeholder {
+            color: #aaa;
+        }
+
+        &:focus {
+            border-color: #000;
+        }
+    }
+
+    .auth-submit-btn {
+        height: 54px;
+        padding: 0 28px;
+        background: #000;
+        color: #fff;
+        font-size: 0.95rem;
+        font-weight: 600;
+        font-family: "Pretendard", sans-serif;
+        cursor: pointer;
+        transition: background 0.2s;
+        white-space: nowrap;
+
+        &:hover {
+            background: #333;
+        }
+    }
+
+    // ─── FAQ 섹션 (BrandQna와 동일) ───────────────────────
+    .faq-inner {
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .section-heading {
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin-bottom: 28px;
+        letter-spacing: -0.02em;
+    }
+
+    .faq-section {
+        padding: 60px 0 80px;
+        margin-top: 0;
+    }
+
+    .faq-accordion {
+        border-top: 1px solid #e6e6e6;
+    }
+
+    .faq-item {
+        border-bottom: 1px solid #e6e6e6;
+
+        &.open {
+            .faq-chevron {
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    .faq-question {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        padding: 20px 4px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        text-align: left;
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: #2f2f2f;
+
+        span {
+            flex: 1;
+            line-height: 1.5;
+        }
+    }
+
+    .faq-chevron {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+        color: #585858;
+        transition: transform 0.25s ease;
+    }
+
+    .faq-answer {
+        padding: 0 4px 24px;
+
+        p {
+            background: #f7f7f7;
+            padding: 16px 20px;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: #585858;
+        }
+    }
+
+    // ─── 기존 auth-faq (미사용 레거시) ───────────────────
+    .auth-faq-section {
+        max-width: 900px;
+        margin: 0 auto 100px;
+        padding: 0 20px;
+    }
+
+    .auth-faq-title {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 32px;
+        color: g.$text-main;
+    }
+
+    .auth-faq-list {
+        border-top: 1px solid g.$card-border;
+    }
+
+    .auth-faq-item {
+        border-bottom: 1px solid g.$card-border;
+
+        .auth-faq-question {
+            width: 100%;
+            @include g.myFlex($jc: space-between, $gap: 16px);
+            padding: 22px 0;
+            font-size: 0.95rem;
+            font-weight: 500;
+            font-family: "Pretendard", sans-serif;
+            color: g.$text-main;
+            text-align: left;
+            cursor: pointer;
+            transition: color 0.15s;
+
+            &:hover {
+                color: #000;
+            }
+
+            .auth-faq-icon {
+                font-size: 1.3rem;
+                flex-shrink: 0;
+                color: g.$text-sub;
+                line-height: 1;
+            }
+        }
+
+        .auth-faq-answer {
+            padding: 0 0 24px;
+
+            p {
+                font-size: 0.87rem;
+                line-height: 1.8;
+                color: g.$text-sub;
+                margin-bottom: 10px;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+
+    // ─── 팝업 (DetailPage와 동일한 구조) ──────────────────
+    .popup-overlay {
+        touch-action: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.4);
+        @include g.myFlex($jc: center, $gap: unset);
+        z-index: 9999;
+
+        .popup-wrap {
+            @include g.myFlex($jc: center, $gap: unset);
+            width: 500px;
+            min-height: 250px;
+            border: 1px solid g.$text-strike;
+            background: #fff;
+            z-index: 10;
+            animation: fadeIn 0.3s ease-in-out forwards;
+
+            .popup {
+                width: 80%;
+                margin: 0 auto;
+
+                >p {
+                    margin: 30px 0;
+                    text-align: center;
+                    font-size: 1rem;
+                    line-height: 1.6;
+                    color: g.$text-main;
+                }
+
+                .popup-buttons {
+                    @include g.myFlex($jc: center, $gap: 10px);
+
+                    button {
+                        padding: 12px 20px;
+                        transition: 0.2s;
+                        width: 100%;
+                        height: 60px;
+                        margin: 20px 0;
+                        border: 1px solid #000;
+                        background: #000;
+                        color: #fff;
+                        font-size: 1rem;
+                        font-family: "Pretendard", sans-serif;
+                        cursor: pointer;
+
+                        &:hover {
+                            color: #000;
+                            background: #fff;
+                        }
+                    }
+
+                    .btn-go-wish {
+                        background: #eee;
+                        border-color: #eee;
+                        color: #000;
+
+                        &:hover {
+                            border: 1px solid #000;
+                            background: #fff;
+                        }
+                    }
+
+                    .btn-close {
+                        background: #000;
+                        border-color: #000;
+                        color: #fff;
+
+                        &:hover {
+                            background: #fff;
+                            color: #000;
+                        }
+                    }
+                }
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: scale(0.97);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+        }
+    }
+}

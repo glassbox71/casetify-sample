@@ -1,0 +1,1259 @@
+// ── Detail 레이아웃 ───────────────────────────────────────
+.detail-page-custom{
+    position: relative;
+    z-index: 0;
+    margin-bottom: -50px;
+    margin-top: 120px;
+
+    .detail-inner-custom {
+
+        width: 1280px;
+        max-width: calc(100% - 40px);
+        margin: 0 auto;
+        display: flex;
+        gap: 60px;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        
+        .popup-overlay {
+            touch-action: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+
+            .popup-wrap {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 500px;
+                height: 250px;
+                border: 1px solid #787878;
+                background: #fff;
+                z-index: 10;
+
+                .popup {
+                    width: 80%;
+                    margin: 0 auto;
+
+                    >p {
+                        margin: 30px 0;
+                        text-align: center;
+                    }
+
+                    .popup-buttons {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 10px;
+
+                        button {
+                            padding: 12px 20px;
+                            transition: 0.2s;
+                            width: 100%;
+                            height: 60px;
+                            margin: 20px 0;
+                            border: 1px solid #000;
+                            background: #000;
+                            color: #fff;
+                            font-size: 1rem;
+
+                            &:hover {
+                                color: #000;
+                                background: #fff;
+                            }
+                        }
+
+                        .btn-go-wish {
+                            background: #eee;
+                            border-color: #eee;
+                            color: #000;
+
+                            &:hover {
+                                border: 1px solid #000;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // ✅ 왼쪽 sticky
+    .detail-left-custom {
+        flex: 1;
+        position: sticky;
+        top: 0;
+        align-self: flex-start;
+    }
+
+    .detail-image-wrap {
+        position: relative;
+        margin-bottom: 10px;
+
+        .detail-main-image {
+            width: 100%;
+            min-width: 300px;
+            background: #f7f7f7;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+    }
+
+    .right-info-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    // ✅ 추가 - jsx에서 사용
+    .right-btn-wrap {
+        margin-top: 20px;
+    }
+
+    .label {
+        font-weight: 400;
+        font-size: 12px;
+    }
+
+    .photo-tab {
+        margin-bottom: 12px;
+    }
+
+    .photo-tab-wrap {
+        display: flex;
+        background: #f1f1f1;
+        border-radius: 12px;
+        padding: 4px;
+    }
+
+    .photo-tab-btn {
+        flex: 1;
+        padding: 10px 0;
+        border: none;
+        background: transparent;
+        border-radius: 10px;
+        font-size: 14px;
+        font-weight: 500;
+        color: #666;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+
+        &.active {
+            background: #fff;
+            color: #111;
+            font-weight: 600;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+    }
+
+    .model-accordion {
+        position: relative;
+
+        .model-accordion-trigger {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 18px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background: #fff;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .model-accordion-list {
+            position: absolute;
+            top: calc(100% + 6px);
+            left: 0;
+            width: 100%;
+            border: 1px solid #e5e5e5;
+            border-radius: 14px;
+            background: #fff;
+            z-index: 10;
+            max-height: 520px;
+            overflow-y: auto;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+
+            .reset-btn {
+                display: block;
+                width: calc(100% - 24px);
+                margin: 12px auto 0;
+                padding: 10px 0;
+                background: none;
+                border: 1px solid #e0e0e0;
+                border-radius: 8px;
+                font-size: 12px;
+                color: #999;
+                text-align: center;
+                cursor: pointer;
+                transition: all 0.2s;
+                letter-spacing: 0.3px;
+
+                &:hover {
+                    border-color: #111;
+                    color: #111;
+                    background: #f7f7f7;
+                }
+            }
+
+.model-brand-tabs {
+    display: flex;
+    gap: 10px;
+    padding: 16px 16px 12px;
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 2;
+    border-bottom: 1px solid #f0f0f0;
+    justify-content: center;
+    flex-wrap: wrap; // ✅ 추가 - 줄바꿈
+
+    button {
+        padding: 8px 24px;
+        border-radius: 999px;
+        border: 1.5px solid #ddd;
+        background: #fafafa;
+        font-size: 14px;
+        font-weight: 500;
+        color: #555;
+        cursor: pointer;
+        transition: all 0.2s;
+        flex: 1;
+        min-width: 80px; // ✅ 추가 - 너무 작아지지 않게
+
+        @media (max-width: 480px) {
+            padding: 8px 12px;
+            font-size: 13px;
+        }
+
+        &.active {
+            border-color: #111;
+            background: #111;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        &:hover:not(.active) {
+            border-color: #bbb;
+            background: #fff;
+            color: #111;
+        }
+    }
+}
+
+            .model-sub-list {
+                padding: 12px;
+
+                li {
+                    padding: 16px 18px;
+                    font-size: 15px;
+                    color: #222;
+                    cursor: pointer;
+                    border-radius: 10px;
+                    border: 1px solid #e3e3e3;
+                    margin-bottom: 10px;
+                    background: #fff;
+                    transition: all 0.15s;
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+
+                    &:hover {
+                        border-color: #bbb;
+                        background: #fafafa;
+                    }
+
+                    &.active {
+                        border-color: #111;
+                        font-weight: 600;
+                        background: #fff;
+                    }
+                }
+            }
+        }
+
+        .model-accordion-arrow {
+            font-size: 11px;
+            color: #888;
+            transition: transform 0.2s ease;
+
+            &.open {
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    // ✅ 오른쪽 - sticky + 내부 스크롤로 장바구니까지 표시
+.detail-right-custom {
+    width: 420px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 120px;          // ✅ 헤더 높이만큼 내려서 시작
+    max-height: calc(100vh - 120px);  // ✅ 헤더 높이 빼기
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding-right: 4px;
+    padding-bottom: 60px;
+
+    &::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #ddd;
+        border-radius: 4px;
+    }
+}
+
+    .detail-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+
+        .badge-free-ship {
+            font-size: 12px;
+            font-weight: 400;
+            color: #135EAB;
+            background: transparent;
+            border: 1px #135EAB solid;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+
+        .detail-product-id {
+            font-size: 11px;
+            color: #aaa;
+            letter-spacing: 0.5px;
+            margin-left: auto;
+        }
+    }
+
+    .detail-title {
+        font-size: 32px;
+        line-height: 1.3;
+        margin-bottom: 16px;
+    }
+
+    .detail-price {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 30px;
+    }
+
+    .detail-colors {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+
+        button {
+            padding: 10px 14px;
+            border: 1px solid #ddd;
+            background: #fff;
+            cursor: pointer;
+            transition: 0.2s;
+
+            &.active {
+                border-color: #111;
+                background: #111;
+                color: #fff;
+            }
+        }
+    }
+
+    .color-chip {
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        margin-right: 6px;
+        vertical-align: middle;
+        border: 1px solid #ccc;
+    }
+
+    .order-result {
+        margin: 20px 0;
+
+        .left-line {
+            border: none;
+            border-top: 1px solid #e5e5e5;
+            margin-bottom: 16px;
+        }
+    }
+
+    .order-result-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 14px 16px;
+        background: #f7f7f7;
+        border-radius: 6px;
+        margin-bottom: 16px;
+
+        .order-option-name {
+            flex: 1;
+            font-size: 13px;
+            color: #111;
+            line-height: 1.5;
+
+            .order-option-detail {
+                font-style: normal;
+                color: #888;
+            }
+        }
+    }
+
+    .order-quantity {
+        display: flex;
+        align-items: center;
+        border: 1px solid #ddd;
+        background: #fff;
+
+        button {
+            width: 28px;
+            height: 28px;
+            border: 0;
+            background: none;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &:hover {
+                background: #f0f0f0;
+            }
+        }
+
+        span {
+            width: 32px;
+            text-align: center;
+            font-size: 14px;
+        }
+    }
+
+    .order-row-price {
+        font-size: 14px;
+        font-weight: 600;
+        white-space: nowrap;
+    }
+
+    .order-total {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0;
+
+        span {
+            font-size: 14px;
+            color: #555;
+        }
+
+        strong {
+            font-size: 20px;
+            font-weight: 700;
+        }
+    }
+
+    .icon {
+        filter: brightness(0) invert(1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 4px;
+
+        img {
+            width: 20px;
+            height: 20px;
+            display: block;
+        }
+    }
+
+    .buy-btn {
+        width: 100%;
+        height: 52px;
+        border: 0;
+        background: #111;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        margin: 20px 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        transition: background 0.2s;
+    }
+
+    // ✅ 비활성 버튼
+    .buy-btn-disabled {
+        background: #ccc;
+        cursor: not-allowed;
+
+        &:hover {
+            background: #ccc;
+        }
+    }
+
+    // ── 반응형 ────────────────────────────────────────────
+    @media (max-width: 1024px) {
+        .detail-inner-custom {  // ✅ 수정: detail-inner → detail-inner-custom
+            gap: 30px;
+        }
+
+        .detail-right-custom {
+            width: 360px;
+        }
+    }
+
+    @media (max-width: 860px) {
+        .detail-inner-custom {  // ✅ 수정: detail-inner → detail-inner-custom
+            flex-direction: column;
+            gap: 0;
+            max-width: calc(100% - 32px);
+        }
+
+        .detail-left-custom {   // ✅ 수정: detail-left → detail-left-custom
+            position: static;
+            width: 100%;
+            flex: none;
+        }
+
+        .detail-image-wrap {
+            margin-bottom: 24px;
+        }
+
+        .detail-right-custom {
+            width: 100%;
+            position: static;
+            max-height: none;
+            overflow-y: visible;
+            padding-right: 0;
+            padding-bottom: 60px;
+        }
+
+        .detail-title {
+            font-size: 26px;
+        }
+
+        .detail-price {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .popup-overlay .popup-wrap {
+            width: calc(100% - 40px);
+            height: auto;
+            padding: 20px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .detail-title {
+            font-size: 22px;
+        }
+
+        .detail-price {
+            font-size: 20px;
+        }
+    }
+}
+
+// ── 진행도 게이지 ─────────────────────────────────────────
+.progress-bar-wrap {
+    width: 100%;
+    height: 3px;
+    background: #eee;
+    border-radius: 99px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: #111;
+    border-radius: 99px;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.progress-complete-msg {
+    font-size: 11px;
+    color: #111;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-align: center;
+    margin-top: 8px;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    height: 0;
+    overflow: hidden;
+
+    &.visible {
+        opacity: 1;
+        transform: translateY(0);
+        height: auto;
+    }
+}
+
+// ── 빠른 메뉴 ─────────────────────────────────────────────
+.custom-quick-menu {
+    margin-top: 24px;
+
+    .quick-menu-label {
+        font-size: 11px;
+        color: #aaa;
+        letter-spacing: 0.5px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .quick-menu-list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .quick-menu-item {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 14px 18px;
+        border: 1px solid #ebebeb;
+        border-radius: 12px;
+        background: #fff;
+        cursor: pointer;
+        transition: all 0.2s;
+        text-align: left;
+        width: 100%;
+
+        &:hover {
+            border-color: #111;
+            background: #fafafa;
+
+            .quick-menu-arrow {
+                transform: translateX(4px);
+            }
+        }
+
+        .quick-menu-icon {
+            font-size: 20px;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+
+        .quick-menu-text {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+
+            strong {
+                font-size: 13px;
+                font-weight: 600;
+                color: #111;
+            }
+
+            small {
+                font-size: 11px;
+                color: #aaa;
+            }
+        }
+
+        .quick-menu-arrow {
+            font-size: 14px;
+            color: #bbb;
+            transition: transform 0.2s ease;
+            flex-shrink: 0;
+        }
+    }
+}
+
+// ✅ 데스크탑: 왼쪽 하단 / 모바일: 숨김
+.quick-menu-desktop {
+    display: block;
+
+    @media (max-width: 860px) {
+        display: none;
+    }
+}
+
+// ✅ 모바일: 오른쪽 하단 / 데스크탑: 숨김
+.quick-menu-mobile {
+    display: none;
+    margin-top: 32px;
+
+    @media (max-width: 860px) {
+        display: block;
+    }
+}
+
+// ── 프리뷰 영역 ───────────────────────────────────────────
+.custom-preview-main {
+    background: #f7f7f7 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    min-height: 360px;
+
+    @media (max-width: 860px) {
+        min-height: 460px !important;
+        padding: 24px 16px;
+        overflow-x: auto;
+    }
+}
+
+// ── 기기 타입별 Placeholder ───────────────────────────────
+.device-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+// ✅ 랩탑 placeholder
+.laptop-placeholder {
+    gap: 0;
+
+    .lp-screen {
+        width: 280px;
+        height: 180px;
+        background: var(--case-color, #111);
+        opacity: 0.25;
+        border-radius: 10px 10px 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .custom-phone-placeholder {
+            opacity: 1;
+            color: rgba(255, 255, 255, 0.5);
+        }
+    }
+
+    .lp-hinge {
+        width: 300px;
+        height: 6px;
+        background: #ccc;
+        border-radius: 0 0 4px 4px;
+    }
+
+    .lp-base {
+        width: 260px;
+        height: 14px;
+        background: #ddd;
+        border-radius: 0 0 8px 8px;
+        margin-top: 1px;
+    }
+}
+
+// ✅ 태블릿 placeholder
+.tablet-placeholder {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+
+    .tb-camera {
+        width: 8px;
+        height: 8px;
+        background: #bbb;
+        border-radius: 50%;
+        flex-shrink: 0;
+    }
+
+    .tb-screen {
+        width: 200px;
+        height: 270px;
+        background: var(--case-color, #111);
+        opacity: 0.25;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .custom-phone-placeholder {
+            opacity: 1;
+            color: rgba(255, 255, 255, 0.5);
+        }
+    }
+}
+
+.custom-phone-preview {
+    width: 240px;
+}
+
+.custom-phone-body {
+    width: 240px;
+    height: 480px;
+    background: var(--case-color, #111111);
+    border-radius: 44px;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    transition: background 0.3s ease;
+}
+
+.custom-phone-camera {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    width: 66px;
+    height: 66px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 14px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    padding: 9px;
+    z-index: 10;
+}
+
+.custom-phone-lens {
+    background: #1a1a2e;
+    border-radius: 50%;
+    border: 1px solid #333;
+}
+
+.custom-phone-screen {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    border-radius: 28px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: filter 0.3s ease;
+    }
+
+    span {
+        font-size: 32px;
+        font-weight: 700;
+        text-align: center;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+        word-break: break-all;
+        padding: 12px;
+        max-width: 100%;
+        line-height: 1.3;
+    }
+}
+
+.custom-phone-placeholder {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.3);
+    text-align: center;
+    white-space: pre-line;
+    line-height: 1.7;
+}
+
+.custom-phone-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.custom-thumb-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: background 0.3s;
+}
+
+.detail-info-box {
+    .label {
+        font-size: 13px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 10px;
+    }
+}
+
+.custom-type-btns {
+    display: flex;
+    gap: 10px;
+}
+
+.custom-type-btn {
+    flex: 1;
+    padding: 14px 10px;
+    border: 1.5px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.15s;
+
+    &:hover {
+        border-color: #111;
+        color: #111;
+    }
+
+    &.active {
+        border-color: #111;
+        background: #111;
+        color: #fff;
+    }
+}
+
+.custom-upload-zone {
+    width: 100%;
+    height: 180px;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    overflow: hidden;
+    transition: border-color 0.15s;
+    background: #fafafa;
+
+    &:hover {
+        border-color: #111;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .custom-upload-icon {
+        font-size: 2rem;
+        color: #ccc;
+        line-height: 1;
+    }
+
+    p {
+        font-size: 0.82rem;
+        color: #aaa;
+        margin-top: 8px;
+    }
+}
+
+.custom-reupload-btn {
+    margin-top: 8px;
+    font-size: 0.8rem;
+    color: #888;
+    cursor: pointer;
+    text-decoration: underline;
+    background: none;
+    border: none;
+
+    &:hover {
+        color: #111;
+    }
+}
+
+.custom-filter-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.custom-filter-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    padding: 8px 6px 10px;
+    cursor: pointer;
+    transition: all 0.15s;
+    background: #fff;
+
+    &:hover,
+    &.active {
+        border-color: #111;
+    }
+
+    span {
+        font-size: 0.72rem;
+        color: #555;
+        font-weight: 500;
+    }
+
+    .custom-filter-img-wrap {
+        width: 100%;
+        aspect-ratio: 1;
+        border-radius: 6px;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: filter 0.3s;
+        }
+    }
+}
+
+.custom-slider-wrap {
+    .label {
+        margin-bottom: 6px;
+    }
+
+    .custom-slider {
+        width: 100%;
+        accent-color: #111;
+        cursor: pointer;
+    }
+
+    .custom-slider-ticks {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.72rem;
+        color: #aaa;
+        margin-top: 4px;
+    }
+}
+
+.custom-text-input-wrap {
+    position: relative;
+
+    .custom-text-input {
+        width: 100%;
+        padding: 14px 52px 14px 16px;
+        border: 1.5px solid #ddd;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-family: "Pretendard", sans-serif;
+        box-sizing: border-box;
+
+        &:focus {
+            outline: none;
+            border-color: #111;
+        }
+    }
+
+    .custom-char-count {
+        position: absolute;
+        right: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 0.72rem;
+        color: #aaa;
+    }
+}
+
+.photo-tab-wrap {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+
+    .photo-tab-btn {
+        flex: 1;
+        padding: 10px 14px;
+        border: 1.5px solid #ddd;
+        border-radius: 8px;
+        background: #fafafa;
+        font-size: 0.88rem;
+        font-weight: 500;
+        color: #555;
+        cursor: pointer;
+        transition: all 0.15s;
+
+        &:hover {
+            border-color: #bbb;
+            color: #111;
+        }
+
+        &.active {
+            border-color: #111;
+            background: #111;
+            color: #fff;
+        }
+    }
+}
+
+.sticker-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+
+    .sticker-card {
+        aspect-ratio: 1;
+        border: 2px solid #eee;
+        border-radius: 12px;
+        background: #fafafa;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        overflow: hidden;
+        transition: all 0.15s;
+        padding: 8px;
+
+        &:hover {
+            border-color: #bbb;
+            background: #f0f0f0;
+        }
+
+        &.active {
+            border-color: #111;
+            background: #f5f5f5;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+
+    
+}
+@media (max-width: 768px) {
+    body {
+        overflow: auto !important;
+    }
+}
+
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to   { transform: translateY(0);    opacity: 1; }
+}
+
+
+
+// ── 단계별 상태 스타일 — ProductCustomizePage.scss 하단에 추가 ──────────
+
+.step-block {
+    border-radius: 12px;
+    padding: 16px;
+    border: 1.5px solid transparent;
+    transition: opacity 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+}
+
+// 현재 진행해야 할 단계 — 검정 테두리로 강조
+.step-active {
+    border-color: #111;
+    background: #fff;
+}
+
+
+// step-done 수정
+.step-done {
+    border-color: #e8e8e8;
+    background: #fafafa;
+    color: #aaa;
+
+    .label {
+        color: #bbb;
+    }
+
+    // ✅ 내부 버튼/입력 요소 흐리게 + 클릭 차단
+    button:not(.step-back-btn),
+    input,
+    ul,
+    li {
+        opacity: 0.4;
+        pointer-events: none;
+    }
+
+    // ✅ 뒤로가기 버튼만 선명하게 유지
+    .step-back-btn {
+        opacity: 1;
+        color: #000;
+        border-color: #ccc;
+        pointer-events: auto;
+
+        &:hover {
+            color: #111;
+            border-color: #111;
+            background: #f0f0f0;
+        }
+    }
+}
+
+// 아직 진입 불가 단계 — 매우 흐리게 + 자식까지 클릭 완전 차단
+.step-locked {
+    opacity: 0.2;
+    pointer-events: none;
+    user-select: none;
+    border-color: transparent;
+
+    * {
+    
+        pointer-events: none !important;
+    }
+}
+
+// ── 단계 라벨 행 (라벨 + 뒤로가기 버튼) ────────────────────
+.step-label-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+
+    .label {
+        margin-bottom: 0;
+    }
+}
+
+// ── 뒤로가기 버튼 기본 스타일 ─────────────────────────────
+.step-back-btn {
+    font-size: 11px;
+    color: #999;
+    background: none;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 4px 10px;
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+
+    &:hover {
+        color: #111;
+        border-color: #111;
+        background: #f7f7f7;
+    }
+}

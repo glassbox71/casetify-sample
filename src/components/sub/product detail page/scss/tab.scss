@@ -1,0 +1,43 @@
+.tab-wrap {
+  .tab-menu {
+    display: flex;
+    width: 100%; // 🔥 가로 꽉 채움
+    border: 1px solid #ddd;
+    border-bottom: none;
+
+    li {
+      flex: 1; // 🔥 균등 분할 핵심
+      text-align: center;
+
+      padding: 14px 0;
+      font-size: 14px;
+      cursor: pointer;
+
+      background: #ffffff;
+      color: #6b6b6b;
+      border-right: 1px solid #ddd;
+      transition: 0.2s;
+
+      span {
+        font-size: 12px;
+        margin-left: 4px;
+      }
+
+      &:last-child {
+        border-right: none;
+      }
+
+      &.active {
+        background: #ffffff;
+        color: #000000;
+        font-weight: Light;
+        position: relative;
+        border-bottom: 1px solid #fff;
+      }
+
+      &:hover {
+        background: #eee;
+      }
+    }
+  }
+}

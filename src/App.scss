@@ -1,0 +1,83 @@
+// 글자색상
+$text-main: #2F2F2F;
+$text-sub: #585858;
+$text-sale: #FF3535;
+$text-strike: #787878;
+
+// card
+$card-border: #E6E6E6;
+
+// casetify colors
+$color-beige: #F7A093;
+$color-yellow: #F2E463;
+$color-pink: #E5BDCE;
+$color-brown: #AF9744;
+$color-green: #21A664;
+$color-orange: #F89462;
+$color-red: #F15B41;
+$color-blue: #135EAB;
+
+// 값
+$section-gap: 150px;
+$group-gap: 40px;
+$title-gap: 20px;
+
+
+
+@mixin myFlex($jc: space-between, $ai: center, $fw: null, $gap: 40px, $fd: null) {
+    display: flex;
+    justify-content: $jc;
+    align-items: $ai;
+    flex-wrap: $fw;
+    gap: $gap;
+    flex-direction: $fd;
+}
+
+// n줄 말줄임
+@mixin multi-ellipsis($lines: 2) {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+// 절대 위치 중앙 정렬
+@mixin pos-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+html {
+    scrollbar-gutter: stable;
+}
+
+body {
+    font-family: "GMarketSans", "Pretendard", sans-serif;
+    color: $text-main;
+    font-size: 16px;
+    overflow-x: hidden;
+}
+
+.inner {
+    max-width: 1440px;
+    margin: 0 auto;
+    // background-color: rgba(255, 0, 0, 0.08);
+}
+
+// 서브페이지
+.sub-page-wrap {
+    margin: 80px 0;
+}
+
+section {
+    margin-top: $section-gap;
+}
+
+button{
+    border: none;
+    background: none;
+    cursor: pointer;
+}
